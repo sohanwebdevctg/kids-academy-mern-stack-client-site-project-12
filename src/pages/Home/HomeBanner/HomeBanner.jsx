@@ -8,7 +8,6 @@ const HomeBanner = () => {
 
   // slider settings
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -17,28 +16,89 @@ const HomeBanner = () => {
   
 
   return (
-    <div className='h-96 bgImage my-5 slider-container overflow-hidden'>
-      <div className="container mx-auto h-full">
+    <div className='h-full sm:h-full md:h-80 lg:h-96 bgImage my-5 slider-container overflow-hidden'>
+      <div className="container mx-auto h-full py-10">
       {/* content section start */}
-      <div>
-      <Slider {...settings} className="h-full">
-        <div className="flex justify-between items-center">
-          <div className="p-10">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, libero deleniti amet incidunt ipsum in consectetur nobis? Hic cupiditate commodi fugiat officia voluptatum! Voluptates aliquid fuga, maxime quam iste possimus neque! Vel repudiandae illum quam? Culpa esse praesentium, magni beatae impedit nisi explicabo eveniet, reiciendis necessitatibus odit voluptate blanditiis iste voluptatum accusamus. Nisi debitis eum ipsam libero obcaecati iste excepturi sed nostrum quasi porro accusamus accusantium qui fugiat id tempore, earum assumenda explicabo nemo ullam corrupti ducimus reprehenderit. Aliquid sequi quas accusantium delectus nihil adipisci enim modi consequuntur quidem provident. Aut quibusdam corporis aperiam sit magnam illum odit explicabo dolores libero cumque, minima asperiores aspernatur voluptate ratione voluptatum doloremque vero optio praesentium soluta culpa? Repellendus debitis tempora impedit laudantium cum! Repellat tenetur rerum doloremque quas fuga culpa explicabo minus alias quaerat sit harum unde, sequi repellendus dignissimos eum perferendis atque quisquam voluptatibus cumque, qui adipisci illum blanditiis id dolorum. Voluptatem, vel labore quo optio reprehenderit dicta et eos, fugit itaque facilis sed error sapiente nemo illo libero saepe sit. Rerum aliquid magni doloremque, autem sequi accusantium quam est laborum magnam cum pariatur perferendis, labore ut eveniet libero voluptatem. Error, molestias incidunt? Ex quidem repudiandae minima neque numquam voluptatibus fugiat iusto.</p>
-          </div>
+      <Slider {...settings}>
+        {/* item 1 start */}
+        <div className="p-5 lg:p-10 space-y-3">
+          {/* title section start */}
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-white">Choice your favourite<br></br>Instructor classes</h1>
+          {/* title section end */}
+          {/* description section start */}
+          <p className="w-full sm:w-[75%] md:w-[65%] lg:w-[55%] xl:w-[50%] text-sm sm:text-base md:text-base lg:text-lg xl:text-base text-gray-300 italic">Instructory is the Online teaching marketplace in Bangladesh to earn money. And best E-Learning platform to learn online courses from the top instructors</p>
+          {/* description section end */}
+          {/* service section start */}
+          <ul className="flex gap-8 items-center">
+            <li className="">
+              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center">+200</p>
+              <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Our Services</p>
+            </li>
+            <li className="">
+              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center">+49</p>
+              <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Favourite Instructor</p>
+            </li>
+            <li className="">
+              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold">+1000</p>
+              <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Our Students</p>
+            </li>
+          </ul>
+          {/* service section end */}
         </div>
-        <div>
-          <div className="p-10">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, libero deleniti amet incidunt ipsum in consectetur nobis? Hic cupiditate commodi fugiat officia voluptatum! Voluptates aliquid fuga, maxime quam iste possimus neque! Vel repudiandae illum quam? Culpa esse praesentium, magni beatae impedit nisi explicabo eveniet, reiciendis necessitatibus odit voluptate blanditiis iste voluptatum accusamus. Nisi debitis eum ipsam libero obcaecati iste excepturi sed nostrum quasi porro accusamus accusantium qui fugiat id tempore, earum assumenda explicabo nemo ullam corrupti ducimus reprehenderit. Aliquid sequi quas accusantium delectus nihil adipisci enim modi consequuntur quidem provident. Aut quibusdam corporis aperiam sit magnam illum odit explicabo dolores libero cumque, minima asperiores aspernatur voluptate ratione voluptatum doloremque vero optio praesentium soluta culpa? Repellendus debitis tempora impedit laudantium cum! Repellat tenetur rerum doloremque quas fuga culpa explicabo minus alias quaerat sit harum unde, sequi repellendus dignissimos eum perferendis atque quisquam voluptatibus cumque, qui adipisci illum blanditiis id dolorum. Voluptatem, vel labore quo optio reprehenderit dicta et eos, fugit itaque facilis sed error sapiente nemo illo libero saepe sit. Rerum aliquid magni doloremque, autem sequi accusantium quam est laborum magnam cum pariatur perferendis, labore ut eveniet libero voluptatem. Error, molestias incidunt? Ex quidem repudiandae minima neque numquam voluptatibus fugiat iusto.</p>
-          </div>
+        {/* item 1 end */}
+        {/* item 2 start */}
+        <div className="p-5 lg:p-10 space-y-3">
+          {/* title section start */}
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-white">We Provide your Clients<br></br>Best services</h1>
+          {/* title section end */}
+          {/* description section start */}
+          <p className="w-full sm:w-[75%] md:w-[65%] lg:w-[55%] xl:w-[50%] text-sm sm:text-base md:text-base lg:text-lg xl:text-base text-gray-300 italic">Instructory is the Online teaching marketplace in Bangladesh to earn money. And best E-Learning platform to learn online courses from the top instructors</p>
+          {/* description section end */}
+          {/* service section start */}
+          <ul className="flex gap-8 items-center">
+            <li className="">
+              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center">+200</p>
+              <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Our Services</p>
+            </li>
+            <li className="">
+              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center">+49</p>
+              <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Favourite Instructor</p>
+            </li>
+            <li className="">
+              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold">+1000</p>
+              <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Our Students</p>
+            </li>
+          </ul>
+          {/* service section end */}
         </div>
-        <div>
-          <div className="p-10">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, libero deleniti amet incidunt ipsum in consectetur nobis? Hic cupiditate commodi fugiat officia voluptatum! Voluptates aliquid fuga, maxime quam iste possimus neque! Vel repudiandae illum quam? Culpa esse praesentium, magni beatae impedit nisi explicabo eveniet, reiciendis necessitatibus odit voluptate blanditiis iste voluptatum accusamus. Nisi debitis eum ipsam libero obcaecati iste excepturi sed nostrum quasi porro accusamus accusantium qui fugiat id tempore, earum assumenda explicabo nemo ullam corrupti ducimus reprehenderit. Aliquid sequi quas accusantium delectus nihil adipisci enim modi consequuntur quidem provident. Aut quibusdam corporis aperiam sit magnam illum odit explicabo dolores libero cumque, minima asperiores aspernatur voluptate ratione voluptatum doloremque vero optio praesentium soluta culpa? Repellendus debitis tempora impedit laudantium cum! Repellat tenetur rerum doloremque quas fuga culpa explicabo minus alias quaerat sit harum unde, sequi repellendus dignissimos eum perferendis atque quisquam voluptatibus cumque, qui adipisci illum blanditiis id dolorum. Voluptatem, vel labore quo optio reprehenderit dicta et eos, fugit itaque facilis sed error sapiente nemo illo libero saepe sit. Rerum aliquid magni doloremque, autem sequi accusantium quam est laborum magnam cum pariatur perferendis, labore ut eveniet libero voluptatem. Error, molestias incidunt? Ex quidem repudiandae minima neque numquam voluptatibus fugiat iusto.</p>
-          </div>
+        {/* item 2 end */}
+        {/* item 3 start */}
+        <div className="p-5 lg:p-10 space-y-3">
+          {/* title section start */}
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-white">Our Students are very<br></br>satisfied</h1>
+          {/* title section end */}
+          {/* description section start */}
+          <p className="w-full sm:w-[75%] md:w-[65%] lg:w-[55%] xl:w-[50%] text-sm sm:text-base md:text-base lg:text-lg xl:text-base text-gray-300 italic">Instructory is the Online teaching marketplace in Bangladesh to earn money. And best E-Learning platform to learn online courses from the top instructors</p>
+          {/* description section end */}
+          {/* service section start */}
+          <ul className="flex gap-8 items-center">
+            <li className="">
+              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center">+200</p>
+              <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Our Services</p>
+            </li>
+            <li className="">
+              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center">+49</p>
+              <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Favourite Instructor</p>
+            </li>
+            <li className="">
+              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold">+1000</p>
+              <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Our Students</p>
+            </li>
+          </ul>
+          {/* service section end */}
         </div>
-      </Slider>
-      </div>
+        {/* item 3 end */}
+        </Slider>
       {/* content section end */}
       </div>
     </div>

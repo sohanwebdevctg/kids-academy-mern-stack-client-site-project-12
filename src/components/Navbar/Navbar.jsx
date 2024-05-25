@@ -29,7 +29,7 @@ const Navbar = () => {
               </li>
               <li className="lg:text-base xl:text-lg">
                 <NavLink
-                  to="/"
+                  to="/instructors"
                   className={({ isActive }) =>
                     isActive ? "text-red-700 font-medium" : "text-black"
                   }
@@ -39,7 +39,7 @@ const Navbar = () => {
               </li>
               <li className="lg:text-base xl:text-lg">
                 <NavLink
-                  to="/"
+                  to="/classes"
                   className={({ isActive }) =>
                     isActive ? "text-red-700 font-medium" : "text-black"
                   }
@@ -113,7 +113,7 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/"
+                      to="/instructors"
                       className={({ isActive }) =>
                         isActive ? "text-red-700 font-medium" : "text-black"
                       }
@@ -123,7 +123,7 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/"
+                      to="/classes"
                       className={({ isActive }) =>
                         isActive ? "text-red-700 font-medium" : "text-black"
                       }
@@ -172,7 +172,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <NavLink
-                    to="/"
+                    to="/instructors"
                     className={({ isActive }) =>
                       isActive ? "text-red-700 font-medium" : "text-black"
                     }
@@ -182,7 +182,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <NavLink
-                    to="/"
+                    to="/classes"
                     className={({ isActive }) =>
                       isActive ? "text-red-700 font-medium" : "text-black"
                     }
