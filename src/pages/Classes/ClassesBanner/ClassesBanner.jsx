@@ -1,10 +1,39 @@
-
+import students from '../../../../public/classes/students.png'
 
 const ClassesBanner = () => {
   return (
-    <div>
+    <div className="bg-black py-10 lg:py-0">
       {/* content section start */}
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod deserunt fuga, voluptate sit voluptates eius fugiat exercitationem. Labore tenetur accusamus deleniti magnam autem commodi odit quod consequatur qui provident, totam culpa eum dolores quo saepe voluptatibus ut repudiandae, molestiae laborum harum libero? Placeat, quasi vitae aliquid illo unde illum, saepe, aspernatur itaque dolorem accusantium molestias enim blanditiis! Non cumque veritatis ratione nobis vel blanditiis, sint officiis dolorem sit tenetur ducimus numquam officia eaque culpa porro? Deleniti necessitatibus accusantium exercitationem provident, aliquam adipisci at deserunt praesentium ducimus. Ipsa pariatur at aut expedita? Maiores similique non possimus reiciendis, recusandae porro dolorem fuga? Maxime, odio labore? Nulla nesciunt consequuntur quis qui officiis neque asperiores nam ea eius. Vitae excepturi enim laudantium quae ab fugiat. Aliquid omnis libero quos sunt adipisci repellat quam eaque eius voluptatem nostrum, beatae reprehenderit corrupti aperiam provident. Nobis dolorum nostrum adipisci est eveniet asperiores? Mollitia ea totam doloribus voluptatibus veritatis aliquid deleniti saepe architecto amet deserunt. Itaque optio at ipsam consequuntur maiores dolorem praesentium eaque, atque sapiente, ut vel minima rem deserunt officiis! Pariatur iste facilis tenetur maiores alias impedit voluptas. Dolore eum, vero fuga tempore numquam debitis sapiente ad eos asperiores, cupiditate incidunt assumenda, exercitationem ullam nam iusto!</p>
+      <div className="h-full lg:h-[600px] flex items-center container mx-auto p-5">
+        <div className="md:flex md:justify-between md:items-center gap-10 h-full">
+          {/* left section start */}
+          <div className='space-y-4'>
+            {/* title section start */}
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-white">Choices Your Favourite<br></br>Instructors Classes</h1>
+          {/* title section end */}
+          {/* description section start */}
+          <p className="w-full sm:w-[75%] md:w-[65%] lg:w-[60%] xl:w-[65%] text-sm sm:text-base md:text-base lg:text-lg xl:text-base text-gray-300 italic">Instructory is the Online teaching marketplace in Bangladesh to earn money. And best E-Learning platform to learn online courses from the top instructors</p>
+          {/* description section end */}
+          {/* button section start */}
+          <ul className='flex items-center gap-5'>
+            <li><button className="btn bg-red-600 hover:bg-red-600 text-white btn-md border-red-600 hover:border-red-600">See More</button></li>
+            <li><button className="btn btn-outline hover:bg-red-600 border-red-600 text-red-600 hover:text-white">Watch More</button></li>
+          </ul>
+          {/* button section end */}
+          </div>
+          {/* left section end */}
+          {/* right section start */}
+          <div className='mt-10'>
+            {/* image section start */}
+            <div className='bg-red-600 rounded-full overflow-hidden w-64 h-64 sm:w-96 sm:h-96 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:h-[400px] xl:w-[400px] mx-auto'>
+            <img className='w-64 h-64 sm:w-96 sm:h-96 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:h-[400px] xl:w-[400px] mx-auto' src={students}></img>
+            </div>
+            
+            {/* image section end */}
+          </div>
+          {/* right section end */}
+        </div>
+      </div>
       {/* content section end */}
     </div>
   );
