@@ -45,7 +45,7 @@ const Login = () => {
         </div>
       </form>
       {/* login route start */}
-      <p className='text-center my-2 text-base'>If you Have no account, <Link className='text-red-600' to="/register">Register</Link></p>
+      <p className='text-center my-2 text-base'>If you Have no account, <Link className='text-red-600' to="/register">SignUp</Link></p>
       {/* login route end */}
       {/* social section start */}
       <Google></Google>

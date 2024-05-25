@@ -17,7 +17,7 @@ const Register = () => {
           {/* form section start */}
           <div className='flex-1'>
             {/* title section start */}
-            <h2 className='text-red-600 text-xl'>Register Form</h2>
+            <h2 className='text-red-600 text-xl'>SignUp Form</h2>
             {/* title section end */}
           <form className=''>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
@@ -64,7 +64,7 @@ const Register = () => {
           <input type="file" className="file-input file-input-bordered file-input-md w-full" />
         </div>
         <div className="form-control mt-6">
-          <button className="btn bg-red-600 hover:bg-red-600 text-white font-bold">Register</button>
+          <button className="btn bg-red-600 hover:bg-red-600 text-white font-bold">SignUp</button>
         </div>
       </form>
       {/* login route start */}
