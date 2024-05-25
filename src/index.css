@@ -2,3 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* homeBannerImg section start */
+.bgImage{
+  background-image: url('../public/bannerImg/bannerBgImg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 3;
+}
+.bgImage::after{
+  position: absolute;
+  content: '';
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0.50;
+  z-index: -1;
+}
+/* homeBannerImg section end */
