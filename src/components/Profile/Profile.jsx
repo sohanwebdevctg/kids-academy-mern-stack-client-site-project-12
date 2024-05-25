@@ -22,7 +22,7 @@ const Profile = ({user}) => {
                 tabIndex={0}
                 className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
               >
-                <li>
+                <li className="block md:hidden">
                   <NavLink
                     to="/"
                     className={({ isActive }) =>
@@ -32,7 +32,7 @@ const Profile = ({user}) => {
                     Home
                   </NavLink>
                 </li>
-                <li>
+                <li className="block md:hidden">
                   <NavLink
                     to="/instructors"
                     className={({ isActive }) =>
@@ -42,7 +42,7 @@ const Profile = ({user}) => {
                     Instructor
                   </NavLink>
                 </li>
-                <li>
+                <li className="block md:hidden">
                   <NavLink
                     to="/classes"
                     className={({ isActive }) =>
