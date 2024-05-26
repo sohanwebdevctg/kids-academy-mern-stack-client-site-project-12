@@ -1,14 +1,50 @@
 import { Link } from 'react-router-dom';
 import registerImg from '../../../public/authenticationImg/registerImg.png'
 import Google from '../Google/Google';
+import { useForm } from 'react-hook-form';
+import { IoMdEye, IoIosEyeOff } from "react-icons/io";
+import { useState } from 'react';
 
 const Register = () => {
+
+
+  const { register, handleSubmit,formState: { errors },} = useForm()
+
+  //form password toggle
+  const [showPas, setShowPas] = useState(false)
+  const [showConPas, setShowConPas] = useState(false)
+  const [correct, setCorrect] = useState(null)
+  const [correctPass, setCorrectPass] = useState(null)
+
+  //form data get
+  const onSubmit = (data) => {
+    
+    // form data
+    const name = data.name;
+    const email = data.email;
+    const prePassword = data.prePassword;
+    const conPassword = data.conPassword;
+    const photo = data.photo[0];
+
+    if(prePassword === conPassword){
+      setCorrect('')
+      setCorrectPass(prePassword)
+    }else{
+      setCorrect('password cannot match')
+    }
+
+    // image validation start
+
+  }
+
+
+
   return (
     <div className='flex items-center h-screen'>
       {/* content section start */}
       <div className="container mx-auto p-3">
         {/* form section start */}
-        <div className='md:flex md:justify-around md:items-center bg-white w-full md:w-3/4 lg:w-2/3 mx-auto rounded-md shadow-lg px-5 py-10'>
+        <div className='md:flex md:justify-around md:items-center bg-white w-full md:w-3/4 lg:w-3/4 xl:2/3 mx-auto rounded-md shadow-lg px-5 py-10'>
           {/* image section start */}
           <div className='flex-1 hidden md:block'>
             <img className='w-full h-full' src={registerImg}></img>
@@ -19,14 +55,15 @@ const Register = () => {
             {/* title section start */}
             <h2 className='text-red-600 text-xl'>SignUp Form</h2>
             {/* title section end */}
-          <form className=''>
+          <form className='' onSubmit={handleSubmit(onSubmit)}>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
-                          {/* name section start */}
+        {/* name section start */}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Name</span>
           </label>
-          <input type="text" placeholder="name" className="input input-bordered" required />
+          <input type="text" placeholder="enter your name" className="input input-bordered" {...register("name", { required: true })} />
+          {errors.name && <span className='text-red-600'>This field is required</span>}
         </div>
         {/* name section end */}
             {/* email section start */}
@@ -34,17 +71,27 @@ const Register = () => {
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" placeholder="email" className="input input-bordered" required />
+          <input type="email" placeholder="enter your email" className="input input-bordered" {...register("email", { required: true })} />
+          {errors.email && <span className='text-red-600'>This field is required</span>}
         </div>
         {/* email section end */}
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
-                      {/* password section start */}
+        {/* password section start */}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" placeholder="password" className="input input-bordered"/>
+          <div className='relative form-control'>
+          <input type={showPas ? "text" : "password"} placeholder="enter password" className="input input-bordered" {...register("prePassword", { required: true, minLength: 6, maxLength: 20, pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/})}/>
+          <span className='absolute right-5 top-[30%] text-xl' onClick={() => setShowPas(!showPas)}>
+            {showPas ? <IoMdEye className='text-green-600'></IoMdEye> : <IoIosEyeOff className='text-red-600'></IoIosEyeOff> }
+          </span>
+          </div>
+          {errors.prePassword?.type === 'required' && <span className='text-red-600'>This field is required</span>}
+          {errors.prePassword?.type === 'minLength' && <span className='text-red-600'>minimum 6 character</span>}
+          {errors.prePassword?.type === 'maxLength' && <span className='text-red-600'>Maximum 20 character</span>}
+          {errors.prePassword?.type === 'maxLength' && <span className='text-red-600'>one (upper & lower case, number and special character) </span>}
         </div>
         {/* password section end */}
         {/* confirmPassword section start */}
@@ -52,16 +99,27 @@ const Register = () => {
           <label className="label">
             <span className="label-text">Confirm Password</span>
           </label>
-          <input type="password" placeholder="password" className="input input-bordered"/>
+          <div className='relative form-control'>
+          <input type={showConPas ? "text" : "password"} placeholder="confirm password" className="input input-bordered" {...register("conPassword", { required: true, minLength: 6, maxLength: 20, pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/})}/>
+          <span className='absolute right-5 top-[30%] text-xl' onClick={() => setShowConPas(!showConPas)}>
+            {showConPas ? <IoMdEye className='text-green-600'></IoMdEye> : <IoIosEyeOff className='text-red-600'></IoIosEyeOff> }
+          </span>
+          </div>
+          {errors.conPassword?.type === 'required' && <span className='text-red-600'>This field is required</span>}
+          {errors.conPassword?.type === 'minLength' && <span className='text-red-600'>minimum 6 character</span>}
+          {errors.conPassword?.type === 'maxLength' && <span className='text-red-600'>Maximum 20 character</span>}
+          {errors.conPassword?.type === 'maxLength' && <span className='text-red-600'>one (upper & lower case, number and special character) </span>}
         </div>
         {/* confirmPassword section end */}
-            </div>
+        <span className='text-red-600'>{correct}</span>
+        </div>
         {/* image section start */}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Image</span>
           </label>
-          <input type="file" className="file-input file-input-bordered file-input-md w-full" />
+          <input type="file" className="file-input file-input-bordered file-input-md w-full" {...register("photo", { required: true })}/>
+          {errors.photo && <span className='text-red-600'>This field is required</span>}
         </div>
         <div className="form-control mt-6">
           <button className="btn bg-red-600 hover:bg-red-600 text-white font-bold">SignUp</button>

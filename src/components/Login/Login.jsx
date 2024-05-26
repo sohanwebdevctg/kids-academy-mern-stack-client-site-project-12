@@ -1,9 +1,27 @@
 import { Link } from 'react-router-dom';
 import loginImg from '../../../public/authenticationImg/loginImg.png';
 import Google from '../Google/Google';
+import { useForm } from 'react-hook-form';
+import { IoMdEye, IoIosEyeOff } from "react-icons/io";
+import { useState } from 'react';
 
 const Login = () => {
 
+
+  const { register, handleSubmit,formState: { errors },} = useForm()
+
+  //form password toggle
+  const [show, setShow] = useState(false)
+
+
+  //form data get
+  const onSubmit = (data) => {
+
+    // form data
+    const email = data.email;
+    const password = data.password;
+
+  }
   
   return (
     <div className='flex items-center h-screen'>
@@ -21,23 +39,31 @@ const Login = () => {
             {/* title section start */}
             <h2 className='text-red-600 text-xl'>LogIn Form</h2>
             {/* title section end */}
-          <form className=''>
-            {/* email section start */}
-            
+          <form className='' onSubmit={handleSubmit(onSubmit)}>
+          {/* email section start */}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" placeholder="email" className="input input-bordered" required />
+          <input type="email" placeholder="enter your email" className="input input-bordered" {...register("email", { required: true })} />
+          {errors.email && <span className='text-red-600'>This field is required</span>}
         </div>
         {/* email section end */}
         {/* password section start */}
-        
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" placeholder="password" className="input input-bordered"/>
+          <div className='relative form-control'>
+          <input type={show ? "text" : "password"} placeholder="enter password" className="input input-bordered" {...register("password", { required: true, minLength: 6, maxLength: 20, pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/})}/>
+          <span className='absolute right-5 top-[30%] text-xl' onClick={() => setShow(!show)}>
+            {show ? <IoMdEye className='text-green-600'></IoMdEye> : <IoIosEyeOff className='text-red-600'></IoIosEyeOff> }
+          </span>
+          </div>
+          {errors.password?.type === 'required' && <span className='text-red-600'>This field is required</span>}
+          {errors.password?.type === 'minLength' && <span className='text-red-600'>minimum 6 character</span>}
+          {errors.password?.type === 'maxLength' && <span className='text-red-600'>Maximum 20 character</span>}
+          {errors.password?.type === 'maxLength' && <span className='text-red-600'>one (upper & lower case, number and special character) </span>}
         </div>
         {/* password section end */}
         <div className="form-control mt-6">
