@@ -1,4 +1,5 @@
 import HomeBanner from "../HomeBanner/HomeBanner";
+import OurStudents from "../OurStudents/OurStudents";
 
 
 const Home = () => {
@@ -7,6 +8,9 @@ const Home = () => {
       {/* content section start */}
       <HomeBanner></HomeBanner>
       {/* content section end */}
+      {/* outStudents section start */}
+      <OurStudents></OurStudents>
+      {/* outStudents section end */}
     </div>
   );
 };
