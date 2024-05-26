@@ -1,7 +1,45 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import useAuth from './../../hooks/useAuth';
+import Swal from "sweetalert2";
 
 
 const Profile = ({user}) => {
+
+  // authProvider
+  const {logOut} = useAuth();
+
+  //navigate
+  const navigate = useNavigate()
+
+  //logOutBtn
+  const logOutBtn = () => {
+    // logout swal
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to log out?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logOut"
+    }).then((result) => {
+      if (result.isConfirmed) {
+    logOut()
+    .then(() => {
+      // navigate
+      navigate('/')
+      // message
+      Swal.fire({
+        title: "logOut",
+        text: "Your are logout now!",
+        icon: "success"
+      });
+    })
+      }
+    });
+    
+  }
+
   return (
     <>
       {/* with user start */}
@@ -63,7 +101,7 @@ const Profile = ({user}) => {
                   </NavLink>
                 </li>
                 <li>
-                <button className="bg-red-600 font-semibold px-3 py-1 rounded-md text-white w-24">
+                <button onClick={logOutBtn} className="bg-red-600 font-semibold px-3 py-1 rounded-md text-white w-24">
                         LogOut
                       </button>
                 </li>
