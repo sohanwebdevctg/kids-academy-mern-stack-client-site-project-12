@@ -1,12 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import registerImg from '../../../public/authenticationImg/registerImg.png'
 import Google from '../Google/Google';
 import { useForm } from 'react-hook-form';
 import { IoMdEye, IoIosEyeOff } from "react-icons/io";
 import { useState } from 'react';
+import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
+
+
 
 const Register = () => {
 
+  //authProvider
+  const {signUp, updateUserProfile} = useAuth();
 
   const { register, handleSubmit,formState: { errors },} = useForm()
 
@@ -14,7 +20,9 @@ const Register = () => {
   const [showPas, setShowPas] = useState(false)
   const [showConPas, setShowConPas] = useState(false)
   const [correct, setCorrect] = useState(null)
-  const [correctPass, setCorrectPass] = useState(null)
+
+  // navigate user
+  const navigate = useNavigate()
 
   //form data get
   const onSubmit = (data) => {
@@ -24,16 +32,51 @@ const Register = () => {
     const email = data.email;
     const prePassword = data.prePassword;
     const conPassword = data.conPassword;
-    const photo = data.photo[0];
-
+    
     if(prePassword === conPassword){
       setCorrect('')
-      setCorrectPass(prePassword)
     }else{
       setCorrect('password cannot match')
     }
 
+    const image = data.photo[0];
+    const formData = new FormData();
+    formData.append('image', image)
+
     // image validation start
+    const image_link = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGLINK}`;
+
+
+    fetch(image_link,{
+      method: 'POST',
+      body : formData
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      // get imageUrl link from imageBB
+      const imageUrl = data.data.display_url;
+      
+      // create User
+      signUp(email, prePassword)
+      .then((result) => {
+        const user = result.user
+        // update user profile
+        updateUserProfile(name, imageUrl)
+        .then(() => {
+          // success message
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your data has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          //navigate
+          navigate('/login')
+        })
+      })
+    })
+
 
   }
 

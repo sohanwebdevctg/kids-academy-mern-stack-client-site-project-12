@@ -1,17 +1,27 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImg from '../../../public/authenticationImg/loginImg.png';
 import Google from '../Google/Google';
 import { useForm } from 'react-hook-form';
 import { IoMdEye, IoIosEyeOff } from "react-icons/io";
 import { useState } from 'react';
+import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const Login = () => {
+
+  //authProvider
+  const {logIn} = useAuth();
 
 
   const { register, handleSubmit,formState: { errors },} = useForm()
 
   //form password toggle
   const [show, setShow] = useState(false)
+
+  //navigate user
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
 
   //form data get
@@ -20,6 +30,22 @@ const Login = () => {
     // form data
     const email = data.email;
     const password = data.password;
+
+    //login user
+    logIn(email, password)
+    .then((res) => {
+      const user = res.user;
+      if(user){
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "You are logged in now",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        navigate(from, {replace: true})
+      }
+    })
 
   }
   
