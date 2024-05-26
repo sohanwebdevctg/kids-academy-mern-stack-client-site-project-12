@@ -58,7 +58,7 @@ const Navbar = () => {
             {/* link section end */}
             {/* profile & login section start */}
             {
-              user && user ? <Profile user={user}></Profile> : <Link to="/login">
+              user && user?.email ? <Profile></Profile> : <Link to="/login">
               <button className="bg-red-600 font-semibold px-4 py-2 rounded-md text-white">
                 LogIn
               </button>
@@ -84,7 +84,7 @@ const Navbar = () => {
             {/* logo section end */}
             {/* profile & login section start */}
             {/* without user start */}
-            {user && user ? <Profile></Profile> : <MobileNavbar></MobileNavbar>}
+            {user && user?.email ? <Profile></Profile> : <MobileNavbar></MobileNavbar>}
             {/* without user end */}
             {/* profile & login section end */}
           </div>

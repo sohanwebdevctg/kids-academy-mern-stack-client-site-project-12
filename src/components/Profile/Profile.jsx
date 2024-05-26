@@ -3,10 +3,12 @@ import useAuth from './../../hooks/useAuth';
 import Swal from "sweetalert2";
 
 
-const Profile = ({user}) => {
+const Profile = () => {
 
   // authProvider
-  const {logOut} = useAuth();
+  const {user,logOut} = useAuth();
+
+  console.log(user)
 
   //navigate
   const navigate = useNavigate()
@@ -52,14 +54,19 @@ const Profile = ({user}) => {
                 <div className="w-10 rounded-full">
                   <img
                     alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    src={ user && user?.email ? user?.photoURL : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"}
                   />
                 </div>
               </div>
+              
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60 overflow-hidden"
               >
+                <li>
+                <p><strong>Name:</strong>{user?.displayName}</p>
+                <p><strong>Email:</strong>{user?.email}</p>
+              </li>
                 <li className="block md:hidden">
                   <NavLink
                     to="/"
