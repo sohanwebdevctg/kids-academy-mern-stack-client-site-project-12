@@ -1,5 +1,6 @@
 import HomeBanner from "../HomeBanner/HomeBanner";
 import OurStudents from "../OurStudents/OurStudents";
+import SportsGallery from "../SportsGallery/SportsGallery";
 
 
 const Home = () => {
@@ -11,6 +12,9 @@ const Home = () => {
       {/* outStudents section start */}
       <OurStudents></OurStudents>
       {/* outStudents section end */}
+      {/* sportsGallery section start */}
+      <SportsGallery></SportsGallery>
+      {/* sportsGallery section end */}
     </div>
   );
 };
