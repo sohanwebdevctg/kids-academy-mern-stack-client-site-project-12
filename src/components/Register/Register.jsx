@@ -6,6 +6,7 @@ import { IoMdEye, IoIosEyeOff } from "react-icons/io";
 import { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 
 
@@ -63,7 +64,12 @@ const Register = () => {
         // update user profile
         updateUserProfile(name, imageUrl)
         .then(() => {
-          // success message
+          
+          //create user backend
+          axios.post('http://localhost:5000/users', {name:name, email: email, photo: imageUrl})
+          .then((data) => {
+            console.log(data)
+            // success message
           Swal.fire({
             position: "center",
             icon: "success",
@@ -73,6 +79,8 @@ const Register = () => {
           });
           //navigate
           navigate('/login')
+          })
+          
         })
       })
     })

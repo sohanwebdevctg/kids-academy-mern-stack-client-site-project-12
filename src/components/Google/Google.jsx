@@ -1,6 +1,8 @@
 import { FaGoogle } from "react-icons/fa6";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Google = () => {
 
@@ -17,8 +19,20 @@ const Google = () => {
     googleSignIn()
     .then((result) => {
       const user = result.user;
-      console.log(user)
-      navigate(from, {replace: true});
+       //create user backend
+       axios.post('http://localhost:5000/users', {name:user.displayName, email: user.email, photo: user.photoURL})
+       .then((data) => {
+        console.log(data)
+        // success message
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your data has been saved",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+    navigate(from, {replace: true});
     })
     .catch((error) => {
       const errorMessage = error.message;
