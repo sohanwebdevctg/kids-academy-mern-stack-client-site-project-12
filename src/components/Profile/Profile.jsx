@@ -8,8 +8,6 @@ const Profile = () => {
   // authProvider
   const {user,logOut} = useAuth();
 
-  console.log(user)
-
   //navigate
   const navigate = useNavigate()
 
@@ -99,7 +97,7 @@ const Profile = () => {
                 </li>
                 <li>
                   <NavLink
-                    to="/"
+                    to="/dashboard"
                     className={({ isActive }) =>
                       isActive ? "text-red-700 font-medium" : "text-black"
                     }
