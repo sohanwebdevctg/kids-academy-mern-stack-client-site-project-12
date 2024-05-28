@@ -68,7 +68,6 @@ const Register = () => {
           //create user backend
           axios.post('http://localhost:5000/users', {name:name, email: email, photo: imageUrl})
           .then((data) => {
-            console.log(data)
             // success message
           Swal.fire({
             position: "center",
