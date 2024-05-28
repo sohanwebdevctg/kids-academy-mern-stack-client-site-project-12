@@ -2,12 +2,9 @@ import { FaGoogle } from "react-icons/fa6";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import axios from "axios";
 
 const Google = () => {
-
-  // useAxiosSecure
-  const [axiosSecure] = useAxiosSecure()
 
   //authProvider
   const { googleSignIn } = useAuth();
@@ -23,13 +20,8 @@ const Google = () => {
       .then((result) => {
         const user = result.user;
         //create user backend
-        axiosSecure
-          .post("http://localhost:5000/users", {
-            name: user.displayName,
-            email: user.email,
-            photo: user.photoURL,
-          })
-          .then((data) => {
+        axios.post("http://localhost:5000/users", {name: user.displayName, email: user.email,photo: user.photoURL})
+        .then((data) => {
             // success message
             Swal.fire({
               position: "center",

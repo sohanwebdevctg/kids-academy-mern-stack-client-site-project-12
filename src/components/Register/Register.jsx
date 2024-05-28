@@ -6,14 +6,12 @@ import { IoMdEye, IoIosEyeOff } from "react-icons/io";
 import { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
+import axios from 'axios';
 
 
 
 const Register = () => {
 
-  // useAxiosSecure
-  const [axiosSecure] = useAxiosSecure();
 
   //authProvider
   const {signUp, updateUserProfile} = useAuth();
@@ -69,7 +67,7 @@ const Register = () => {
         .then(() => {
           
           //create user backend
-          axiosSecure.post('http://localhost:5000/users', {name:name, email: email, photo: imageUrl})
+          axios.post('http://localhost:5000/users', {name:name, email: email, photo: imageUrl})
           .then((data) => {
             // success message
           Swal.fire({

@@ -1,11 +1,65 @@
-
+import { MdDelete } from "react-icons/md";
+import { FaUsersCog } from "react-icons/fa";
+import { FaUserShield } from "react-icons/fa6";
 
 const ManageUsers = () => {
   return (
     <div>
       {/* content section start */}
-      <h1>manage users</h1>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae ea nostrum quis distinctio quasi similique excepturi, mollitia facilis delectus eius quod repellendus tempora consectetur molestiae cupiditate modi quisquam nihil possimus perspiciatis ratione ipsam at nam aut neque! Aperiam nostrum, ea sint recusandae incidunt suscipit et! Temporibus placeat molestiae delectus tempora voluptatem minima dignissimos error expedita, perspiciatis accusamus, deleniti recusandae cupiditate necessitatibus impedit ratione nemo dolor natus possimus ex pariatur assumenda laboriosam. Non, tenetur? Quo nihil numquam ad a, voluptatum, voluptatibus deserunt, illum repudiandae officia repellat nulla mollitia doloremque? Praesentium repellat reiciendis unde ex rerum cumque consequatur voluptates saepe impedit est.</p>
+      <div className="container mx-auto py-20 px-5 sm:px-6 md:px-10 lg:px-10 xl:px-14">
+        {/* title section start */}
+        <div className="text-center">
+          <h3 className="text-sm sm:text-lg md:text-lg lg:text-xk xl:text-2xl text-red-500 border-y-[1px] border-red-500 w-[70%] sm:w-[45%] md:w-[40%] lg:w-[35%] xl:w-[32%] mx-auto py-2 italic">
+            --- Manage Users ---
+          </h3>
+        </div>
+        {/* title section end */}
+        {/* details section start */}
+        <div className="mt-5">
+          <table className="table ">
+            {/* head */}
+            <thead className="bg-red-600 text-white">
+              <tr>
+                <th>#</th>
+                <th>Profile</th>
+                <th>Name</th>
+                <th>Active Role</th>
+                <th>Role</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              <tr>
+                <td></td>
+                <td>
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
+                        <img
+                          src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
+                          alt="Avatar Tailwind CSS Component"
+                        />
+                      </div>
+                    </div>
+                </td>
+                <td>one</td>
+                <td>Purple</td>
+                <td className="flex items-center gap-2 pt-6">
+                  {/* admin start */}
+                  <FaUserShield className="xl:text-3xl text-white bg-red-600 rounded-sm p-1"></FaUserShield>
+                  {/* admin end */}
+                  {/* instructor start */}
+                  <FaUsersCog className="xl:text-3xl text-white bg-red-600 rounded-sm p-1"></FaUsersCog>
+                  {/* instructor end */}
+                  
+                </td>
+                <td><MdDelete className="xl:text-3xl text-white bg-red-600 rounded-sm"></MdDelete></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        {/* details section end */}
+      </div>
       {/* content section end */}
     </div>
   );

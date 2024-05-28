@@ -4,9 +4,17 @@ const ManageClasses = () => {
   return (
     <div>
       {/* content section start */}
-      <h1>manage classes</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic animi iste pariatur officia nihil magnam deserunt vero recusandae aspernatur magni temporibus repellat, sint aliquam autem ab delectus quibusdam ad odit maiores culpa eligendi corrupti, placeat at illum. Ratione incidunt optio iure distinctio porro voluptatem voluptate velit minima molestiae aperiam, voluptas tempora dolorem id hic ab beatae enim perferendis aut obcaecati, nobis amet maiores dolores architecto. Debitis magnam doloremque hic exercitationem dicta. Sint nostrum dolore eveniet, numquam ipsum consectetur debitis at culpa minus perspiciatis quasi, in ad beatae cumque esse quod error aspernatur, odio quis similique soluta iure maiores. Minima unde quam totam aliquam labore, reprehenderit eum, provident, animi maiores error incidunt ea minus quae exercitationem ullam molestiae nihil ipsam nulla suscipit facere iusto? Sapiente quasi odit labore itaque nesciunt quis corrupti natus! Quis dolor nemo debitis, magni sed natus eveniet reprehenderit deleniti nesciunt iusto consequuntur dicta veritatis quae porro? Et at possimus impedit qui velit, libero voluptatum suscipit illum error iste provident ullam architecto ab hic, atque fugiat eos iure? Voluptate quas ipsa deleniti facilis vel asperiores doloribus aspernatur obcaecati ab nisi adipisci voluptatum repudiandae voluptas quidem, illo molestias tempore dolorem sint labore vero laudantium eaque voluptatibus? At, suscipit nemo?</p>
+      <div className="container mx-auto py-20 px-5 sm:px-6 md:px-10 lg:px-10 xl:px-14">
+        {/* title section start */}
+        <div className="text-center">
+          <h3 className="text-sm sm:text-lg md:text-lg lg:text-xk xl:text-2xl text-red-500 border-y-[1px] border-red-500 w-[70%] sm:w-[45%] md:w-[40%] lg:w-[35%] xl:w-[32%] mx-auto py-2 italic">--- Manage Classes ---</h3>
+        </div>
+        {/* title section end */}
+
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In, dolores a ex nihil repudiandae repellendus id expedita officiis eveniet, ipsam cumque mollitia? Consequuntur fugiat voluptatum perspiciatis, ullam maxime unde soluta culpa modi temporibus, sequi iure necessitatibus ipsum? Laudantium ipsam facilis perferendis exercitationem recusandae rerum ab! Dolores odio tempore explicabo ab vero aliquid laudantium corrupti dignissimos quisquam suscipit. Explicabo alias aliquam incidunt ab, expedita tempore consequuntur rerum placeat sint voluptatibus possimus libero accusantium nihil repellendus. Est omnis tenetur modi et autem dolore ratione, animi, natus sint dolorem possimus error, at corporis ad fugit totam iste. Veritatis eveniet deserunt suscipit eius illo?</p>
+      </div>
       {/* content section end */}
+      
     </div>
   );
 };

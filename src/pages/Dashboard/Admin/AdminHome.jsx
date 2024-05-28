@@ -4,9 +4,17 @@ const AdminHome = () => {
   return (
     <div>
       {/* content section start */}
-      <h1>admin home</h1>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae eaque ipsa vel, molestias amet velit necessitatibus. Totam deleniti sint similique atque nisi voluptas placeat, impedit et voluptatum molestias delectus sit maiores culpa nostrum facere ut exercitationem quae est. Veniam reprehenderit laboriosam excepturi recusandae expedita ex numquam consequatur magnam minus vel quis eius natus, saepe magni in quas quod. Dolorum incidunt porro illo aspernatur eligendi est mollitia itaque asperiores et non ducimus sapiente atque placeat, aliquam quod eaque ipsa perspiciatis aliquid optio culpa voluptatum enim possimus, natus sed! Eligendi minus commodi quasi nulla optio. Reprehenderit debitis numquam ratione enim, animi expedita id accusantium quis dicta temporibus voluptatibus incidunt autem et assumenda dolores natus, nostrum necessitatibus? Id hic fuga temporibus soluta? Dolor aliquid provident mollitia maiores veritatis accusantium excepturi voluptatem iste itaque praesentium alias nostrum, nam impedit dicta a nobis tempore earum. Facilis eum ullam, modi earum fugit aspernatur atque voluptatibus dicta quaerat corrupti eveniet? Dolorum architecto soluta a aspernatur, ad nisi adipisci quisquam, asperiores sint omnis sapiente in, alias autem velit consectetur. Dolorem quos nihil placeat voluptatum aut vitae quisquam explicabo aliquid incidunt iure, quas error sunt odio distinctio suscipit voluptatem nulla dolores ducimus cupiditate nobis commodi officia illo expedita!</p>
-      {/* content section start */}
+      <div className="container mx-auto py-20 px-5 sm:px-6 md:px-10 lg:px-10 xl:px-14">
+        {/* title section start */}
+        <div className="text-center">
+          <h3 className="text-sm sm:text-lg md:text-lg lg:text-xk xl:text-2xl text-red-500 border-y-[1px] border-red-500 w-[70%] sm:w-[45%] md:w-[40%] lg:w-[35%] xl:w-[32%] mx-auto py-2 italic">--- Admin Home ---</h3>
+        </div>
+        {/* title section end */}
+
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In, dolores a ex nihil repudiandae repellendus id expedita officiis eveniet, ipsam cumque mollitia? Consequuntur fugiat voluptatum perspiciatis, ullam maxime unde soluta culpa modi temporibus, sequi iure necessitatibus ipsum? Laudantium ipsam facilis perferendis exercitationem recusandae rerum ab! Dolores odio tempore explicabo ab vero aliquid laudantium corrupti dignissimos quisquam suscipit. Explicabo alias aliquam incidunt ab, expedita tempore consequuntur rerum placeat sint voluptatibus possimus libero accusantium nihil repellendus. Est omnis tenetur modi et autem dolore ratione, animi, natus sint dolorem possimus error, at corporis ad fugit totam iste. Veritatis eveniet deserunt suscipit eius illo?</p>
+      </div>
+      {/* content section end */}
+      
     </div>
   );
 };
