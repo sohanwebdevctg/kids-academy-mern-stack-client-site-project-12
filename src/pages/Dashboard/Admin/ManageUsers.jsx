@@ -1,8 +1,31 @@
 import { MdDelete } from "react-icons/md";
 import { FaUsersCog } from "react-icons/fa";
 import { FaUserShield } from "react-icons/fa6";
+import useAxiosSecure from './../../../hooks/useAxiosSecure';
+import { useQuery } from "@tanstack/react-query";
 
 const ManageUsers = () => {
+
+  // get axiosSecure hook
+  const [axiosSecure] = useAxiosSecure();
+
+
+  //fetch user data
+  const { data : users = [], refetch } = useQuery({
+    queryKey: ['users'],
+    queryFn: async () => {
+      const res = await axiosSecure.get('/users')
+      return res.data
+    },
+  })
+
+  //delete user
+  const deleteFund = (user) => {
+    // fetch user data
+    axiosSecure.delete(`/user/admin/${user._id}`)
+    .then((data) => console.log(data))
+  }
+
   return (
     <div>
       {/* content section start */}
@@ -30,19 +53,20 @@ const ManageUsers = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              <tr>
-                <td></td>
+              {
+                users.map((user, index) => <tr key={index}>
+                <td>{++index}</td>
                 <td>
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
                         <img
-                          src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
-                          alt="Avatar Tailwind CSS Component"
+                          src={user && user?.photo}
+                          alt={user && user?.name}
                         />
                       </div>
                     </div>
                 </td>
-                <td>one</td>
+                <td>{user && user?.name}</td>
                 <td>Purple</td>
                 <td className="flex items-center gap-2 pt-6">
                   {/* admin start */}
@@ -54,7 +78,9 @@ const ManageUsers = () => {
                   
                 </td>
                 <td><MdDelete className="xl:text-3xl text-white bg-red-600 rounded-sm"></MdDelete></td>
-              </tr>
+              </tr>)
+              }
+              
             </tbody>
           </table>
         </div>

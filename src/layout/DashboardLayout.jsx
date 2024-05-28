@@ -55,9 +55,9 @@ const DashboardLayout = () => {
   return (
     <div className="h-screen">
       {/* content section start */}
-      <div className="lg:flex lg:justify-between lgitems-center h-[100%]">
+      <div className="lg:flex lg:justify-between lgitems-center h-screen">
         {/* sidebar section start */}
-        <div className="hidden lg:block lg:w-[15%] bg-red-700 h-[100%] space-y-5 p-5">
+        <div className="hidden lg:block lg:w-[15%] bg-red-700 h-screen space-y-5 p-5">
         {/* logo section start */}
         <Link to="/">
         <img src={logo} className="w-[45%] h-[7%] mx-auto"></img>
@@ -83,7 +83,7 @@ const DashboardLayout = () => {
         </div>
         {/* sidebar section end */}
         {/* content section start */}
-        <div className="w-full lg:w-[85%] bg-white h-[100%]">
+        <div className="w-full lg:w-[85%] bg-white h-screen">
           <Outlet></Outlet>
         </div>
         {/* content section end */}
