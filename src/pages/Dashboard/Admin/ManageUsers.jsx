@@ -20,6 +20,46 @@ const ManageUsers = () => {
     },
   })
 
+  // create admin from user
+  const adminFun = (user) => {
+    if(user && user?.email){
+      axiosSecure.patch(`/users/admin/${user._id}`, {role : 'admin'})
+      .then((data) => {
+        if(data.data.status === 200){
+          refetch()
+          // success message
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "You are admin now",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      })
+    }
+  }
+
+  // create instructor from user
+  const instructorFun = (user) => {
+    if(user && user?.email){
+      axiosSecure.patch(`/users/admin/${user._id}`, {role : 'instructor'})
+      .then((data) => {
+        refetch()
+        if(data.data.status === 200){
+          // success message
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "You are instructor now",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      })
+    }
+  }
+
   //delete user in admin dashboard
   const deleteFund = (user) => {
     // fetch user data
@@ -32,7 +72,7 @@ const ManageUsers = () => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Your user has been deleted",
+          title: "This user has been deleted",
           showConfirmButton: false,
           timer: 1500
         });
@@ -83,13 +123,15 @@ const ManageUsers = () => {
                     </div>
                 </td>
                 <td>{user && user?.name}</td>
-                <td>Purple</td>
+                <td>
+                  {user?.role === 'admin' || user?.role === 'instructor' ? <span className="bg-green-500 text-white">{user?.role}</span> : <span className="bg-blue-600 text-white">Users</span>}
+                </td>
                 <td className="flex items-center gap-2 pt-6">
                   {/* admin start */}
-                  <FaUserShield className="xl:text-3xl text-white bg-red-600 rounded-sm p-1"></FaUserShield>
+                  <FaUserShield onClick={() => adminFun(user)} className="xl:text-3xl text-white bg-red-600 rounded-sm p-1"></FaUserShield>
                   {/* admin end */}
                   {/* instructor start */}
-                  <FaUsersCog className="xl:text-3xl text-white bg-red-600 rounded-sm p-1"></FaUsersCog>
+                  <FaUsersCog onClick={() => instructorFun(user)} className="xl:text-3xl text-white bg-red-600 rounded-sm p-1"></FaUsersCog>
                   {/* instructor end */}
                   
                 </td>
