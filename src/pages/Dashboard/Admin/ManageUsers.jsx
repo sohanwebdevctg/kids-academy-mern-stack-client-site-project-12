@@ -3,6 +3,7 @@ import { FaUsersCog } from "react-icons/fa";
 import { FaUserShield } from "react-icons/fa6";
 import useAxiosSecure from './../../../hooks/useAxiosSecure';
 import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
 
@@ -19,11 +20,26 @@ const ManageUsers = () => {
     },
   })
 
-  //delete user
+  //delete user in admin dashboard
   const deleteFund = (user) => {
     // fetch user data
-    axiosSecure.delete(`/user/admin/${user._id}`)
-    .then((data) => console.log(data))
+    if(user){
+      axiosSecure.delete(`/users/admin/${user._id}`)
+    .then((data) => {
+      if(data.data.status === 200){
+        refetch();
+        // success message
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your user has been deleted",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    })
+    }
+    
   }
 
   return (
@@ -77,7 +93,7 @@ const ManageUsers = () => {
                   {/* instructor end */}
                   
                 </td>
-                <td><MdDelete className="xl:text-3xl text-white bg-red-600 rounded-sm"></MdDelete></td>
+                <td><MdDelete onClick={() => deleteFund(user)} className="xl:text-3xl text-white bg-red-600 rounded-sm"></MdDelete></td>
               </tr>)
               }
               
