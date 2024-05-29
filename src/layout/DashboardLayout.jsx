@@ -18,7 +18,10 @@ const DashboardLayout = () => {
   const isAdmin = true;
 
   // instructor role
-  const isInstructors = true;
+  // const isInstructors = false;
+
+  // user
+  // const users = false;
 
   //admin links
   const admin = <ul className="space-y-1">
@@ -29,11 +32,11 @@ const DashboardLayout = () => {
   </ul>
 
 //instructors links
-  const instructors = <ul className="space-y-1">
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="instructorHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>Instructor Home</span></NavLink></li>
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="addAClass" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><MdAddChart></MdAddChart><span>Add A Class</span></NavLink></li>
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="myClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><TbKeyboardShow></TbKeyboardShow><span>My Classes</span></NavLink></li>
-  </ul>
+  // const instructors = <ul className="space-y-1">
+  // <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="instructorHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>Instructor Home</span></NavLink></li>
+  // <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="addAClass" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><MdAddChart></MdAddChart><span>Add A Class</span></NavLink></li>
+  // <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="myClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><TbKeyboardShow></TbKeyboardShow><span>My Classes</span></NavLink></li>
+  // </ul>
 
 
 
@@ -67,10 +70,10 @@ const DashboardLayout = () => {
 
         {/* user profile section end */}
         {/* admin link section start */}
-        {isAdmin || isInstructors === true ? admin : user}
+        {isAdmin ? admin : user}
         {/* admin link section end */}
         {/* instructor link section start */}
-        {isInstructors === true ? instructors : user}
+        {/* {isInstructors === true ? instructors : user} */}
         {/* instructor link section end */}
         <ul>
           <div className="divider"></div>

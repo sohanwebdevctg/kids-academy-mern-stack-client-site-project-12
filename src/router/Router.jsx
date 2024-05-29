@@ -18,6 +18,7 @@ import UserHome from "../pages/Dashboard/User/UserHome";
 import MySelectedClasses from "../pages/Dashboard/User/MySelectedClasses";
 import MyEnrollClasses from './../pages/Dashboard/User/MyEnrollClasses';
 import PaymentHistory from "../pages/Dashboard/User/PaymentHistory";
+import PrivateRoute from "../privateRoute/PrivateRoute";
 
 
 
@@ -52,7 +53,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {

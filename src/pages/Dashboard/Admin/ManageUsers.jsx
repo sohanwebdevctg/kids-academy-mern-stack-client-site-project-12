@@ -43,7 +43,7 @@ const ManageUsers = () => {
   // create instructor from user
   const instructorFun = (user) => {
     if(user && user?.email){
-      axiosSecure.patch(`/users/admin/${user._id}`, {role : 'instructor'})
+      axiosSecure.patch(`/users/instructor/${user._id}`, {role : 'instructor'})
       .then((data) => {
         refetch()
         if(data.data.status === 200){
