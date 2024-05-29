@@ -47,12 +47,30 @@ const ManageUsers = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Your work has been saved",
+            title: "You are admin now",
             showConfirmButton: false,
             timer: 1500
           });
         }
+      })
+    }
+  }
 
+  //instructor function
+  const instructorFun = (user) => {
+    if(user && user?.email){
+      axiosSecure.patch(`/users/instructor/${user._id}`)
+      .then((data) => {
+        if(data.data.modifiedCount > 0){
+          refetch()
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "You are instructor now",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
       })
     }
   }
@@ -109,7 +127,7 @@ const ManageUsers = () => {
                   <FaUserShield onClick={() => adminFun(user)}  className="xl:text-3xl text-white bg-red-600 rounded-sm p-1"></FaUserShield>
                   {/* admin end */}
                   {/* instructor start */}
-                  <FaUsersCog className="xl:text-3xl text-white bg-red-600 rounded-sm p-1"></FaUsersCog>
+                  <FaUsersCog onClick={() => instructorFun(user)} className="xl:text-3xl text-white bg-red-600 rounded-sm p-1"></FaUsersCog>
                   {/* instructor end */}
                   
                 </td>
