@@ -8,6 +8,7 @@ import { BsPersonVideo3, BsPersonVideo2 } from "react-icons/bs";
 import { TbKeyboardShow } from "react-icons/tb";
 import { FaMoneyBillTrendUp, FaUsersGear } from "react-icons/fa6";
 import { LuMonitorDot } from "react-icons/lu";
+import useAdmin from "../hooks/useAdmin";
 
 
 
@@ -16,7 +17,7 @@ import { LuMonitorDot } from "react-icons/lu";
 const DashboardLayout = () => {
 
   // admin role
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   // instructor role
   // const isInstructors = false;
@@ -31,6 +32,7 @@ const DashboardLayout = () => {
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="manageUsers" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaUsersCog></FaUsersCog><span>Manage Users</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="manageStudents" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaUsersGear></FaUsersGear><span>Manage Students</span></NavLink></li>
   </ul>
+
 
 //instructors links
   // const instructors = <ul className="space-y-1">

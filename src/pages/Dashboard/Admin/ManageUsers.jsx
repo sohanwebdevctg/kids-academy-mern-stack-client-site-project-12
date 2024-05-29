@@ -1,25 +1,17 @@
 import { MdDelete } from "react-icons/md";
 import { FaUsersCog } from "react-icons/fa";
 import { FaUserShield } from "react-icons/fa6";
-import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useUsers from "../../../hooks/useUsers";
 
 const ManageUsers = () => {
 
   // get axiosSecure hook
   const [axiosSecure] = useAxiosSecure();
 
-
-  //fetch user data
-  const { data : users = [], refetch } = useQuery({
-    queryKey: ['users'],
-
-    queryFn: async () => {
-      const res = await axiosSecure.get('/users')
-      return res.data
-    },
-  })
+  // users
+  const [users, refetch] = useUsers();
 
 
 
