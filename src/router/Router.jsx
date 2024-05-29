@@ -20,6 +20,7 @@ import MyEnrollClasses from './../pages/Dashboard/User/MyEnrollClasses';
 import PaymentHistory from "../pages/Dashboard/User/PaymentHistory";
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import AdminRoute from "../privateRoute/AdminRoute";
+import InstructorRoute from "../privateRoute/InstructorRoute";
 
 
 
@@ -75,15 +76,15 @@ export const router = createBrowserRouter([
       },
       {
         path: 'instructorHome',
-        element : <InstructorHome></InstructorHome>
+        element : <InstructorRoute><InstructorHome></InstructorHome></InstructorRoute>
       },
       {
         path: 'addAClass',
-        element : <AddAClass></AddAClass>
+        element : <InstructorRoute><AddAClass></AddAClass></InstructorRoute>
       },
       {
         path: 'myClasses',
-        element : <MyClasses></MyClasses>
+        element : <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
       },
       {
         path: 'userHome',

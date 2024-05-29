@@ -68,11 +68,12 @@ const DashboardLayout = () => {
 
         {/* user profile section end */}
         {/* admin link section start */}
-        {isAdmin === true ? admin : user}
+        {isAdmin === true ? admin : ''}
         {/* admin link section end */}
         {/* instructor link section start */}
-        {isInstructor === true && instructors}
+        {isInstructor === true ? instructors : ''}
         {/* instructor link section end */}
+        {isAdmin && isInstructor === false ? user : ''}
         <ul>
           <div className="divider"></div>
         </ul>
