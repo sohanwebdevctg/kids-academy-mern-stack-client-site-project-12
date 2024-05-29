@@ -1,9 +1,9 @@
 import { MdDelete } from "react-icons/md";
 import { FaUsersCog } from "react-icons/fa";
 import { FaUserShield } from "react-icons/fa6";
-import useAxiosSecure from './../../../hooks/useAxiosSecure';
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
 
@@ -14,51 +14,14 @@ const ManageUsers = () => {
   //fetch user data
   const { data : users = [], refetch } = useQuery({
     queryKey: ['users'],
+
     queryFn: async () => {
       const res = await axiosSecure.get('/users')
       return res.data
     },
   })
 
-  // create admin from user
-  const adminFun = (user) => {
-    if(user && user?.email){
-      axiosSecure.patch(`/users/admin/${user._id}`, {role : 'admin'})
-      .then((data) => {
-        if(data.data.status === 200){
-          refetch()
-          // success message
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "You are admin now",
-            showConfirmButton: false,
-            timer: 1500
-          });
-        }
-      })
-    }
-  }
 
-  // create instructor from user
-  const instructorFun = (user) => {
-    if(user && user?.email){
-      axiosSecure.patch(`/users/instructor/${user._id}`, {role : 'instructor'})
-      .then((data) => {
-        refetch()
-        if(data.data.status === 200){
-          // success message
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "You are instructor now",
-            showConfirmButton: false,
-            timer: 1500
-          });
-        }
-      })
-    }
-  }
 
   //delete user in admin dashboard
   const deleteFund = (user) => {
@@ -80,6 +43,26 @@ const ManageUsers = () => {
     })
     }
     
+  }
+
+  // admin function
+  const adminFun = (user) => {
+    if(user && user?.email){
+      axiosSecure.patch(`/users/admin/${user._id}`)
+      .then((data) => {
+        if(data.data.modifiedCount > 0){
+          refetch()
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+
+      })
+    }
   }
 
   return (
@@ -124,14 +107,17 @@ const ManageUsers = () => {
                 </td>
                 <td>{user && user?.name}</td>
                 <td>
-                  {user?.role === 'admin' || user?.role === 'instructor' ? <span className="bg-green-500 text-white">{user?.role}</span> : <span className="bg-blue-600 text-white">Users</span>}
+                  {user && user?.role === 'admin' ? <span className="bg-green-600 text-white p-1 rounded-lg">Admin</span> : ''}
+                  {user && user?.role === 'instructor' ? <span className="bg-yellow-600 text-white p-1 rounded-lg">Instructor</span> : ''}
+                  {user && user?.role === undefined || null ? <span className="bg-blue-600 text-white p-1 rounded-lg">Users</span> : ''}
+                  
                 </td>
                 <td className="flex items-center gap-2 pt-6">
                   {/* admin start */}
-                  <FaUserShield onClick={() => adminFun(user)} className="xl:text-3xl text-white bg-red-600 rounded-sm p-1"></FaUserShield>
+                  <FaUserShield onClick={() => adminFun(user)}  className="xl:text-3xl text-white bg-red-600 rounded-sm p-1"></FaUserShield>
                   {/* admin end */}
                   {/* instructor start */}
-                  <FaUsersCog onClick={() => instructorFun(user)} className="xl:text-3xl text-white bg-red-600 rounded-sm p-1"></FaUsersCog>
+                  <FaUsersCog className="xl:text-3xl text-white bg-red-600 rounded-sm p-1"></FaUsersCog>
                   {/* instructor end */}
                   
                 </td>

@@ -12,6 +12,7 @@ import { LuMonitorDot } from "react-icons/lu";
 
 
 
+
 const DashboardLayout = () => {
 
   // admin role
@@ -70,7 +71,7 @@ const DashboardLayout = () => {
 
         {/* user profile section end */}
         {/* admin link section start */}
-        {isAdmin ? admin : user}
+        {isAdmin === true ? admin : user}
         {/* admin link section end */}
         {/* instructor link section start */}
         {/* {isInstructors === true ? instructors : user} */}
