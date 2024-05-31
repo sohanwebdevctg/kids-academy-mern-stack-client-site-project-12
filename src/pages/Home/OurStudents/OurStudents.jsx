@@ -7,7 +7,13 @@ const OurStudents = () => {
   return (
     <div className="bg-red-700 h-full md:h-full px-5 py-16 md:py-14">
       {/* content section start */}
-      <div className="container mx-auto h-full flex items-center">
+      <div className="container mx-auto h-full">
+        {/* title section start */}
+        <div className="mb-10">
+          <h1 className="text-white text-base sm:text-lg md:text-base lg:text-lg xl:text-2xl font-semibold">--- Our Best Students ---</h1>
+          <p className="text-slate-200 text-xs sm:text-sm md:text-xs lg:text-sm xl:text-base italic w-full sm:w-[75%] md:w-[70%] lg:w-[55%] xl:w-[50%]">Learning happens slowly and consistently. Take for example the process we went through when we learned to read.  There were steps, from holding a book the right way up, to recognising letters to phonetics, years of practising and finally fluency.</p>
+        </div>
+        {/* title section end */}
         <dig className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-4 lg:gap-6 xl:gap-10">
           {/* item1 start */}
           <div>
