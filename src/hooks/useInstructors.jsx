@@ -3,16 +3,18 @@ import useAxiosSecure from "./useAxiosSecure";
 
 
 
+
 const useInstructors = () => {
 
-   //axiosSecure
-   const [axiosSecure] = useAxiosSecure();
+  //axiosSecure
+  const [axiosSecure] = useAxiosSecure();
 
   const { data : instructors = [] } = useQuery({
-    queryKey: ['instructors'],
+    queryKey: ['instructor'],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/users/instructor`)
-      return res.data
+      const res = await axiosSecure.get(`/users/instructors`)
+      const instructor = res.data.filter((data) => data.role === 'instructor')
+      return instructor
     }
   })
 
