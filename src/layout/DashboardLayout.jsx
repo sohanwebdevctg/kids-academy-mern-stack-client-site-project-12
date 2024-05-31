@@ -56,24 +56,21 @@ const DashboardLayout = () => {
   return (
     <div className="h-screen">
       {/* content section start */}
-      <div className="lg:flex lg:justify-between lgitems-center h-screen">
+      <div className="flex justify-between items-center h-screen">
         {/* sidebar section start */}
-        <div className="hidden lg:block lg:w-[15%] bg-red-700 h-screen space-y-5 p-5">
+        <div className="w-[15%] bg-red-700 h-screen space-y-5 p-5">
         {/* logo section start */}
         <Link to="/">
         <img src={logo} className="w-[45%] h-[7%] mx-auto"></img>
         </Link>
         {/* logo section end */}
-        {/* user profile section start */}
-
-        {/* user profile section end */}
         {/* admin link section start */}
         {isAdmin === true ? admin : ''}
         {/* admin link section end */}
         {/* instructor link section start */}
         {isInstructor === true ? instructors : ''}
         {/* instructor link section end */}
-        {isAdmin && isInstructor === false ? user : ''}
+        {isAdmin || isInstructor === false && user }
         <ul>
           <div className="divider"></div>
         </ul>
@@ -85,7 +82,7 @@ const DashboardLayout = () => {
         </div>
         {/* sidebar section end */}
         {/* content section start */}
-        <div className="w-full lg:w-[85%] bg-white h-screen">
+        <div className="w-[85%] bg-white h-screen">
           <Outlet></Outlet>
         </div>
         {/* content section end */}

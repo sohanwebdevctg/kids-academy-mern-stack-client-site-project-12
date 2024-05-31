@@ -15,11 +15,10 @@ const AdminHome = () => {
           <h3 className="text-sm sm:text-lg md:text-lg lg:text-xk xl:text-2xl text-red-500 border-y-[1px] border-red-500 w-[70%] sm:w-[45%] md:w-[40%] lg:w-[35%] xl:w-[32%] mx-auto py-2 italic">--- Admin Home ---</h3>
         </div>
         {/* title section end */}
-
         {/* profile section start */}
-        <div className="flex justify-center items-center gap-10 bg-slate-200 shadow-lg mt-5 py-5">
+        <div className="flex justify-center items-center gap-10 bg-slate-200 shadow-lg mt-5 py-5 w-2/3 mx-auto">
           {/* image section start */}
-          <div className='text-center'>
+          <div className='text-center '>
             <img src={user.photoURL} className='w-44 h-44 rounded-full'></img>
           </div>
           {/* image section end */}

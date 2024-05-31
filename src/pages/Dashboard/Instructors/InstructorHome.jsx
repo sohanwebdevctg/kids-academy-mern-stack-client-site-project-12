@@ -20,7 +20,7 @@ const InstructorHome = () => {
         </div>
         {/* title section end */}
         {/* profile section start */}
-        <div className="flex justify-center items-center gap-10 bg-slate-200 shadow-lg mt-5 py-5">
+        <div className="flex justify-center items-center gap-10 bg-slate-200 shadow-lg mt-5 py-5 w-2/3 mx-auto">
           {/* image section start */}
           <div className='text-center'>
             <img src={user.photoURL} className='w-44 h-44 rounded-full'></img>
