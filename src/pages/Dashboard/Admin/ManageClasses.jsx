@@ -1,13 +1,16 @@
 import Swal from "sweetalert2";
 import useAllClasses from "../../../hooks/useAllClasses";
-import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { MdDelete } from "react-icons/md";
+import { useState } from "react";
 
 const ManageClasses = () => {
 
   //axiosSecure
   const [axiosSecure] = useAxiosSecure()
+
+  // modal open
+  const [open, setOpen] = useState(false)
 
   //allClasses data
   const [allClasses, refetch] = useAllClasses();
@@ -50,6 +53,14 @@ const ManageClasses = () => {
         refetch();
       }
     })
+  }
+
+  const feedbackData = (event) => {
+    event.preventDefault()
+    const form = event.target;
+    console.log(form.feedback.value)
+    form.reset()
+    
   }
 
   return (
@@ -143,17 +154,16 @@ const ManageClasses = () => {
                     </button>
                     <dialog id="my_modal_1" className="modal">
                       <div className="modal-box">
-                        <form>
+                          <div className="modal-action">
+                          <form onSubmit={feedbackData} method="dialog" className="w-full">
                           <textarea
                             placeholder="enter my feed back"
-                            className="textarea textarea-bordered textarea-lg w-full"
+                            className="textarea textarea-bordered textarea-lg w-full" name="feedback"
                           ></textarea>
-                        </form>
-                        <div className="modal-action">
-                          <form method="dialog">
-                            <button className="btn">Close</button>
+                            <button type="submit" className="btn">Close</button>
                           </form>
                         </div>
+                        
                       </div>
                     </dialog>
                   </td>
