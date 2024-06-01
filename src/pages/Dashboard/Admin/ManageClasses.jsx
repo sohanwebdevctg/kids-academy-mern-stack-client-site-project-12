@@ -1,8 +1,56 @@
+import Swal from "sweetalert2";
 import useAllClasses from "../../../hooks/useAllClasses";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { MdDelete } from "react-icons/md";
 
 const ManageClasses = () => {
+
+  //axiosSecure
+  const [axiosSecure] = useAxiosSecure()
+
   //allClasses data
   const [allClasses, refetch] = useAllClasses();
+
+  //approvedStatus
+  const approvedStatusFun = (data) => {
+    axiosSecure.patch(`/classes/status/${data._id}`,{
+      status: "approved"
+    })
+    .then((data) => {
+      // success message
+      if(data.data.modifiedCount > 0){
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "status approved",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        refetch();
+      }
+    })
+  }
+
+  //denyStatus
+  const denyStatusFun = (data) => {
+    axiosSecure.patch(`/classes/status/${data._id}`,{
+      status: "deny"
+    })
+    .then((data) => {
+      // success message
+      if(data.data.modifiedCount > 0){
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "status deny",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        refetch();
+      }
+    })
+  }
 
   return (
     <div>
@@ -54,18 +102,27 @@ const ManageClasses = () => {
                   <td>{data.availableSeats}</td>
                   <td>$ {data.price}</td>
                   <td>
-                    <span className="bg-blue-600 text-white p-1 rounded-lg">
+                    {
+                      data.status === 'pending' ? <span className="bg-blue-600 text-white p-1 rounded-lg">
+                      {data.status}
+                    </span> : <span className="bg-green-600 text-white p-1 rounded-lg">
                       {data.status}
                     </span>
+                    }
                   </td>
                   <td>
-                    <button className="btn text-white bg-green-600 hover:bg-green-600 btn-xs">
+                    {
+                      data.status === 'pending' ?  <>
+                      <button onClick={() => approvedStatusFun(data)} className="btn text-white bg-green-600 hover:bg-green-600 btn-xs">
                       Approve
                     </button>
                     <br></br>
-                    <button className="btn text-white bg-red-600 hover:bg-red-600 btn-xs">
+                    <button onClick={() => denyStatusFun(data)} className="btn text-white bg-red-600 hover:bg-red-600 btn-xs">
                       Deny
                     </button>
+                      </> : <MdDelete className="xl:text-3xl text-white bg-red-600 rounded-sm"></MdDelete>
+                    }
+                    
                   </td>
                   <td>
                     <button
@@ -79,7 +136,10 @@ const ManageClasses = () => {
                     <dialog id="my_modal_1" className="modal">
                       <div className="modal-box">
                         <form>
-                        <textarea placeholder="enter my feed back" className="textarea textarea-bordered textarea-lg w-full"></textarea>
+                          <textarea
+                            placeholder="enter my feed back"
+                            className="textarea textarea-bordered textarea-lg w-full"
+                          ></textarea>
                         </form>
                         <div className="modal-action">
                           <form method="dialog">
