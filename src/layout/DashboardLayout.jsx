@@ -22,7 +22,7 @@ const DashboardLayout = () => {
 
   //admin links
   const admin = <ul className="space-y-1">
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="adminHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>Admin Home</span></NavLink></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="/dashboard/adminHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>Admin Home</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="manageClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><LuMonitorDot></LuMonitorDot><span>Manage Classes</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="manageUsers" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaUsersCog></FaUsersCog><span>Manage Users</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="manageStudents" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaUsersGear></FaUsersGear><span>Manage Students</span></NavLink></li>
@@ -31,7 +31,7 @@ const DashboardLayout = () => {
 
 //instructors links
   const instructors = <ul className="space-y-1">
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="instructorHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>Instructor Home</span></NavLink></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="/dashboard/instructorHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>Instructor Home</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="addAClass" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><MdAddChart></MdAddChart><span>Add A Class</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="myClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><TbKeyboardShow></TbKeyboardShow><span>My Classes</span></NavLink></li>
   </ul>
@@ -40,7 +40,7 @@ const DashboardLayout = () => {
 
 // user links
   const user = <ul className="space-y-1">
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="userHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>User Home</span></NavLink></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="/dashboard/userHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>User Home</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="mySelectedClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><BsPersonVideo3></BsPersonVideo3><span>My Selected Classes</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="myEnrollClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><BsPersonVideo2></BsPersonVideo2><span>My Enroll Classes</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="paymentHistory" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaMoneyBillTrendUp></FaMoneyBillTrendUp><span>Payment History</span></NavLink></li>
