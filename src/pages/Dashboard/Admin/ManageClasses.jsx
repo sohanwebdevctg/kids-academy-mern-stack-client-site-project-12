@@ -103,9 +103,17 @@ const ManageClasses = () => {
                   <td>$ {data.price}</td>
                   <td>
                     {
-                      data.status === 'pending' ? <span className="bg-blue-600 text-white p-1 rounded-lg">
+                      data.status === 'pending' && <span className="bg-blue-600 text-white p-1 rounded-lg">
                       {data.status}
-                    </span> : <span className="bg-green-600 text-white p-1 rounded-lg">
+                    </span>
+                    }
+                    {
+                      data.status === 'approved' && <span className="bg-green-600 text-white p-1 rounded-lg">
+                      {data.status}
+                    </span>
+                    }
+                    {
+                      data.status === 'deny' && <span className="bg-yellow-600 text-white p-1 rounded-lg">
                       {data.status}
                     </span>
                     }

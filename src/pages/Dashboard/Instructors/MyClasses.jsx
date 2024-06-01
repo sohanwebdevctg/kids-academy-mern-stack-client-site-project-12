@@ -1,8 +1,7 @@
 import useInstructorClass from "../../../hooks/useInstructorClass";
 
 const MyClasses = () => {
-  const [instructorClass, refetch] = useInstructorClass();
-  console.log(instructorClass);
+  const [instructorClass] = useInstructorClass();
 
   return (
     <div>
@@ -59,12 +58,25 @@ const MyClasses = () => {
                     <td>$ {data.price}</td>
                     <td>{data.totalEnroll || 0}</td>
                     <td>
-                      <span className="bg-blue-600 text-white p-1 rounded-lg">
+                      {
+                        data.status === 'pending' && <span className="bg-blue-600 text-white p-1 rounded-lg">
                         {data.status}
                       </span>
+                      }
+                      {
+                        data.status === 'approved' && <span className="bg-green-600 text-white p-1 rounded-lg">
+                        {data.status}
+                      </span>
+                      }
+                      {
+                        data.status === 'deny' && <span className="bg-yellow-600 text-white p-1 rounded-lg">
+                        {data.status}
+                      </span>
+                      }
+                      
                     </td>
                     <td>
-                      <label htmlFor="my_modal_7" className="btn btn-xs bg-green-600 hover:bg-green-600">
+                      <label htmlFor="my_modal_7" className="btn btn-xs bg-yellow-600 hover:bg-yellow-600 text-white">
                         See Feedback
                       </label>
                       <input
