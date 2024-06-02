@@ -6,7 +6,7 @@ const PopularClasses = () => {
 
   //allClasses
   const [allClasses] = useAllClasses();
-  
+
   return (
     <div className="h-full md:h-full px-5 py-16 md:py-14">
       {/* content section start */}
@@ -18,7 +18,6 @@ const PopularClasses = () => {
         {/* title section end */}
         {/* instructors card section start */}
         <dig className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 lg:gap-6 xl:gap-10">
-          
         {
           allClasses.slice(0,6).map((data, index) => <ClassCard key={index} data={data}></ClassCard>)
         }

@@ -1,4 +1,5 @@
 
+import AllClasses from '../AllClasses/AllClasses';
 import ClassesBanner from './../ClassesBanner/ClassesBanner';
 
 const Classes = () => {
@@ -8,6 +9,9 @@ const Classes = () => {
       {/* banner section start */}
       <ClassesBanner></ClassesBanner>
       {/* banner section end */}
+      {/* allClasses section start */}
+      <AllClasses></AllClasses>
+      {/* allClasses section end */}
       {/* content section end */}
     </div>
   );
