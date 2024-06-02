@@ -180,7 +180,7 @@ const ManageClasses = () => {
                             <label className="label">
                               <span className="label-text">Feedback</span>
                             </label>
-                            <textarea name="feedback" placeholder="enter my feedback" className="textarea textarea-bordered textarea-sm w-full" ></textarea>
+                            <textarea value="no feedback" name="feedback" placeholder="enter my feedback" className="textarea textarea-bordered textarea-sm w-full" ></textarea>
                           </div>
                           <div className="form-control mt-6">
                             <button type="submit" className="btn btn-primary">Send</button>
