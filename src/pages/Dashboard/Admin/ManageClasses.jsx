@@ -5,62 +5,81 @@ import { MdDelete } from "react-icons/md";
 import { useState } from "react";
 
 const ManageClasses = () => {
-
   //axiosSecure
-  const [axiosSecure] = useAxiosSecure()
-
-  // modal open
-  const [open, setOpen] = useState(false)
+  const [axiosSecure] = useAxiosSecure();
 
   //allClasses data
   const [allClasses, refetch] = useAllClasses();
 
+  // userId
+  const [userId,setUserId] = useState(null)
+  // toggle data
+  const [open, setOpen] = useState(false)
+
   //approvedStatus
   const approvedStatusFun = (data) => {
-    axiosSecure.patch(`/classes/status/${data._id}`,{
-      status: "approved"
-    })
-    .then((data) => {
-      // success message
-      if(data.data.modifiedCount > 0){
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "status approved",
-          showConfirmButton: false,
-          timer: 1500
-        });
-        refetch();
-      }
-    })
-  }
+    axiosSecure
+      .patch(`/classes/status/${data._id}`, {
+        status: "approved",
+      })
+      .then((data) => {
+        // success message
+        if (data.data.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "status approved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch();
+        }
+      });
+  };
 
   //denyStatus
   const denyStatusFun = (data) => {
-    axiosSecure.patch(`/classes/status/${data._id}`,{
-      status: "deny"
-    })
-    .then((data) => {
-      // success message
-      if(data.data.modifiedCount > 0){
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "status deny",
-          showConfirmButton: false,
-          timer: 1500
-        });
-        refetch();
-      }
-    })
-  }
+    axiosSecure
+      .patch(`/classes/status/${data._id}`, {
+        status: "deny",
+      })
+      .then((data) => {
+        // success message
+        if (data.data.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "status deny",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch();
+        }
+      });
+  };
 
-  const feedbackData = (event) => {
-    event.preventDefault()
+  // feedback function
+  const feedbackFun = (event) => {
+    event.preventDefault();
     const form = event.target;
-    console.log(form.feedback.value)
-    form.reset()
-    
+    const feedback = form.feedback.value;
+    setOpen(!open)
+    axiosSecure
+      .patch(`/classes/feedback/${userId._id}`, {feedback})
+      .then((data) => {
+        // success message
+        if (data.data.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "feedback send",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch();
+        }
+      });
+      form.reset()
   }
 
   return (
@@ -93,7 +112,7 @@ const ManageClasses = () => {
             <tbody>
               {allClasses.map((data, index) => (
                 <tr key={index} className="bg-slate-100 shadow-md">
-                  <td>{++index}</td>
+                  <td>{data._id}</td>
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">
@@ -113,65 +132,69 @@ const ManageClasses = () => {
                   <td>{data.availableSeats}</td>
                   <td>$ {data.price}</td>
                   <td>
-                    {
-                      data.status === 'pending' && <span className="bg-blue-600 text-white p-1 rounded-lg">
-                      {data.status}
-                    </span>
-                    }
-                    {
-                      data.status === 'approved' && <span className="bg-green-600 text-white p-1 rounded-lg">
-                      {data.status}
-                    </span>
-                    }
-                    {
-                      data.status === 'deny' && <span className="bg-yellow-600 text-white p-1 rounded-lg">
-                      {data.status}
-                    </span>
-                    }
+                    {data.status === "pending" && (
+                      <span className="bg-blue-600 text-white p-1 rounded-lg">
+                        {data.status}
+                      </span>
+                    )}
+                    {data.status === "approved" && (
+                      <span className="bg-green-600 text-white p-1 rounded-lg">
+                        {data.status}
+                      </span>
+                    )}
+                    {data.status === "deny" && (
+                      <span className="bg-yellow-600 text-white p-1 rounded-lg">
+                        {data.status}
+                      </span>
+                    )}
                   </td>
                   <td>
-                    {
-                      data.status === 'pending' ?  <>
-                      <button onClick={() => approvedStatusFun(data)} className="btn text-white bg-green-600 hover:bg-green-600 btn-xs">
-                      Approve
-                    </button>
-                    <br></br>
-                    <button onClick={() => denyStatusFun(data)} className="btn text-white bg-red-600 hover:bg-red-600 btn-xs">
-                      Deny
-                    </button>
-                      </> : <MdDelete className="xl:text-3xl text-white bg-red-600 rounded-sm"></MdDelete>
-                    }
-                    
+                    {data.status === "pending" ? (
+                      <>
+                        <button
+                          onClick={() => approvedStatusFun(data)}
+                          className="btn text-white bg-green-600 hover:bg-green-600 btn-xs"
+                        >
+                          Approve
+                        </button>
+                        <br></br>
+                        <button
+                          onClick={() => denyStatusFun(data)}
+                          className="btn text-white bg-red-600 hover:bg-red-600 btn-xs"
+                        >
+                          Deny
+                        </button>
+                      </>
+                    ) : (
+                      <MdDelete className="xl:text-3xl text-white bg-red-600 rounded-sm"></MdDelete>
+                    )}
                   </td>
                   <td>
-                    <button
-                      className="btn btn-xs bg-yellow-600 hover:bg-hover-600"
-                      onClick={() =>
-                        document.getElementById("my_modal_1").showModal()
-                      }
-                    >
-                      FeedBack
+                    <button onClick={() => {setUserId(data), setOpen(!open)} }className="btn btn-xs bg-yellow-600 text-white hover:bg-yellow-600">
+                      feedback
                     </button>
-                    <dialog id="my_modal_1" className="modal">
-                      <div className="modal-box">
-                          <div className="modal-action">
-                          <form onSubmit={feedbackData} method="dialog" className="w-full">
-                          <textarea
-                            placeholder="enter my feed back"
-                            className="textarea textarea-bordered textarea-lg w-full" name="feedback"
-                          ></textarea>
-                            <button type="submit" className="btn">Close</button>
-                          </form>
-                        </div>
-                        
+                    <div className={`w-[80%] bg-black bg-opacity-5 ${open ? 'visible fixed top-[20%] left-[10%] bottom-[20%] flex items-center justify-center': 'hidden'}`}>
+                      <div className="card w-1/2  bg-base-100">
+                        <form onSubmit={feedbackFun} className="card-body">
+                          <div className="form-control">
+                            <label className="label">
+                              <span className="label-text">Feedback</span>
+                            </label>
+                            <textarea name="feedback" placeholder="enter my feedback" className="textarea textarea-bordered textarea-sm w-full" ></textarea>
+                          </div>
+                          <div className="form-control mt-6">
+                            <button type="submit" className="btn btn-primary">Send</button>
+                          </div>
+                        </form>
                       </div>
-                    </dialog>
+                    </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+
         {/* details section end */}
       </div>
       {/* content section end */}
