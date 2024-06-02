@@ -79,6 +79,7 @@ const ManageClasses = () => {
           refetch();
         }
       });
+    
       form.reset()
   }
 
@@ -112,7 +113,7 @@ const ManageClasses = () => {
             <tbody>
               {allClasses.map((data, index) => (
                 <tr key={index} className="bg-slate-100 shadow-md">
-                  <td>{data._id}</td>
+                  <td>{++index}</td>
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">
@@ -180,7 +181,7 @@ const ManageClasses = () => {
                             <label className="label">
                               <span className="label-text">Feedback</span>
                             </label>
-                            <textarea value="no feedback" name="feedback" placeholder="enter my feedback" className="textarea textarea-bordered textarea-sm w-full" ></textarea>
+                            <textarea defaultValue="no feedback" name="feedback" placeholder="enter my feedback" className="textarea textarea-bordered textarea-sm w-full" ></textarea>
                           </div>
                           <div className="form-control mt-6">
                             <button type="submit" className="btn btn-primary">Send</button>
