@@ -1,32 +1,36 @@
 import { MdDelete } from "react-icons/md";
 import useUserSelectedClasses from "../../../hooks/useUserSelectedClasses";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const MySelectedClasses = () => {
+
+  //axiosSecure
+  const [axiosSecure] = useAxiosSecure()
 
   //selected classes get
   const [userSelectedClasses,refetch] = useUserSelectedClasses();
 
     //delete user in admin dashboard
     const deleteFund = (data) => {
-      console.log(data)
-      // fetch user data
-      // if(user){
-      //   axiosSecure.delete(`/users/admin/${user._id}`)
-      // .then((data) => {
-      //   if(data.data.status === 200){
-      //     refetch();
-      //     // success message
-      //     Swal.fire({
-      //       position: "center",
-      //       icon: "success",
-      //       title: "This user has been deleted",
-      //       showConfirmButton: false,
-      //       timer: 1500
-      //     });
-      //   }
-      // })
-      // }
+      // delete single classes data
+        axiosSecure.delete(`/selectedClass/${data._id}`)
+      .then((data) => {
+        console.log(data.data)
+        if(data.data.deletedCount > 0){
+          // success message
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "This data has been",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+        refetch();
+      })
+
       
     }
 
