@@ -1,6 +1,11 @@
+import useUserSelectedClasses from "../../../hooks/useUserSelectedClasses";
 
 
 const MySelectedClasses = () => {
+
+  const [userSelectedClasses,refetch] = useUserSelectedClasses();
+  console.log(userSelectedClasses)
+
   return (
     <div>
     {/* content section start */}
