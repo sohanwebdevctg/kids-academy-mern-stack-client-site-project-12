@@ -1,14 +1,66 @@
+import Swal from 'sweetalert2';
+import useAuth from '../../hooks/useAuth';
 import useAdmin from './../../hooks/useAdmin';
 import useInstructor from './../../hooks/useInstructor';
+import { useLocation, useNavigate } from 'react-router-dom';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+
 
 const ClassCard = ({data}) => {
   // console.log(data)
+
+  //navigated
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // admin role
   const [isAdmin] = useAdmin();
 
   //instructor role
   const [isInstructor] = useInstructor();
+
+  //axiosSecure
+  const [axiosSecure] = useAxiosSecure()
+
+  // authProvider
+  const {user} = useAuth();
+
+  //select class
+  const selectClass = (data) => {
+
+    if(user && user?.email){
+      const selectedClasses = {classId: data._id, email: user?.email, instructorEmail: data.instructorEmail, instructorName:data.instructorName,classImage: data.classImage, className: data.className, price: data.price}
+
+      //select this card data from instructor to user
+      axiosSecure.post('/selectedClass', selectedClasses)
+      .then((data) => {
+        if(data.data.insertedId){
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your data has been inserted",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      })
+      
+    }else{
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You have an account please login?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "LogIn"
+      }).then((result) => {
+        if(result.isConfirmed){
+          navigate('/login', {state: {from: location}})
+        }
+      });
+    }
+  }
 
   return (
     <div className="bg-white shadow-lg">
@@ -24,7 +76,7 @@ const ClassCard = ({data}) => {
             <li className="text-[9px] sm:text-sm md:text-xs lg:text-base xl:text-base"><span className="font-bold">availableSeats :</span> {data.availableSeats}</li>
             <li className="text-[9px] sm:text-sm md:text-xs lg:text-base xl:text-base"><span className="font-bold">Price :</span> ${data.price}</li>
             <li>
-            <button disabled={isAdmin || isInstructor} className="btn btn-xs lg:btn-md w-full bg-red-600 hover:bg-red-600 text-white">Select</button>
+            <button onClick={() => selectClass(data)} disabled={isAdmin || isInstructor || data.enroll === 0} className="btn btn-xs lg:btn-md w-full bg-red-600 hover:bg-red-600 text-white">Select</button>
             </li>
           </ul>
         </div>
