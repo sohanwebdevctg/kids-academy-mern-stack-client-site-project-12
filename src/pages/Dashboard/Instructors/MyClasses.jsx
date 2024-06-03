@@ -1,7 +1,22 @@
+import { useState } from "react";
 import useInstructorClass from "../../../hooks/useInstructorClass";
 
 const MyClasses = () => {
   const [instructorClass] = useInstructorClass();
+
+  console.log(instructorClass);
+
+  // toggle data
+  const [open, setOpen] = useState(false);
+
+  // feedback data
+  const [feedBack, setFeedBack] = useState(null)
+
+  // feedback function
+  const clickFun = (data) => {
+    const feedbackData = instructorClass.find((value) => value._id === data._id)
+    setFeedBack(feedbackData.feedback)
+  };
 
   return (
     <div>
@@ -36,7 +51,10 @@ const MyClasses = () => {
               </thead>
               <tbody>
                 {instructorClass.map((data, index) => (
-                  <tr key={index} className="bg-slate-100 shadow-md text-center">
+                  <tr
+                    key={index}
+                    className="bg-slate-100 shadow-md text-center"
+                  >
                     <td>{++index}</td>
                     <td>
                       <div className="flex items-center gap-3">
@@ -58,42 +76,60 @@ const MyClasses = () => {
                     <td>$ {data.price}</td>
                     <td>{data.totalEnroll || 0}</td>
                     <td>
-                      {
-                        data.status === 'pending' && <span className="bg-blue-600 text-white p-1 rounded-lg">
-                        {data.status}
-                      </span>
-                      }
-                      {
-                        data.status === 'approved' && <span className="bg-green-600 text-white p-1 rounded-lg">
-                        {data.status}
-                      </span>
-                      }
-                      {
-                        data.status === 'deny' && <span className="bg-yellow-600 text-white p-1 rounded-lg">
-                        {data.status}
-                      </span>
-                      }
-                      
+                      {data.status === "pending" && (
+                        <span className="bg-blue-600 text-white p-1 rounded-lg">
+                          {data.status}
+                        </span>
+                      )}
+                      {data.status === "approved" && (
+                        <span className="bg-green-600 text-white p-1 rounded-lg">
+                          {data.status}
+                        </span>
+                      )}
+                      {data.status === "deny" && (
+                        <span className="bg-yellow-600 text-white p-1 rounded-lg">
+                          {data.status}
+                        </span>
+                      )}
                     </td>
                     <td>
-                      <label htmlFor="my_modal_7" className="btn btn-xs bg-yellow-600 hover:bg-yellow-600 text-white">
-                        See Feedback
-                      </label>
-                      <input
-                        type="checkbox"
-                        id="my_modal_7"
-                        className="modal-toggle"
-                      />
-                      <div className="modal" role="dialog">
-                        <div className="modal-box">
-                          <h3 className="text-lg font-bold">Hello!</h3>
-                          <p className="py-4">
-                            This modal works with a hidden checkbox!
-                          </p>
+                      <button
+                        onClick={() => {
+                          clickFun(data), setOpen(!open);
+                        }}
+                        className="btn btn-xs bg-yellow-600 text-white hover:bg-yellow-600"
+                      >
+                        feedback
+                      </button>
+                      <div
+                        className={`w-[80%] bg-black bg-opacity-25  ${
+                          open
+                            ? "visible fixed top-[20%] left-[10%] bottom-[20%] flex items-center justify-center"
+                            : "hidden"
+                        }`}
+                      >
+                        <div className="card w-1/2 h-1/2 bg-base-100 relative">
+                        <button onClick={() => setOpen(!open)} className="absolute right-5 top-3 btn btn-sm btn-circle btn-outline">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                        </button>
+                          <div className="mt-10 h-full">
+                            <h1 className="font-bold">Admin Feedback</h1>
+                            <p>{feedBack || 'no feedback for admin'}</p>
+                          </div>
                         </div>
-                        <label className="modal-backdrop" htmlFor="my_modal_7">
-                          Close
-                        </label>
                       </div>
                     </td>
                   </tr>
