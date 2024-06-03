@@ -8,10 +8,11 @@ const useInstructorClass = () => {
   const [axiosSecure] = useAxiosSecure();
 
   //auhProvider
-  const {user} = useAuth();
+  const {user, loading} = useAuth();
 
   const { data : instructorClass = [], refetch } = useQuery({
     queryKey: ['instructorClass', user?.email],
+    enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/allClass/instructor?email=${user?.email}`)
       return res.data

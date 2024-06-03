@@ -1,7 +1,15 @@
-
+import useAdmin from './../../hooks/useAdmin';
+import useInstructor from './../../hooks/useInstructor';
 
 const ClassCard = ({data}) => {
-  console.log(data)
+  // console.log(data)
+
+  // admin role
+  const [isAdmin] = useAdmin();
+
+  //instructor role
+  const [isInstructor] = useInstructor();
+
   return (
     <div className="bg-white shadow-lg">
       {/* content section start */}
@@ -16,7 +24,7 @@ const ClassCard = ({data}) => {
             <li className="text-[9px] sm:text-sm md:text-xs lg:text-base xl:text-base"><span className="font-bold">availableSeats :</span> {data.availableSeats}</li>
             <li className="text-[9px] sm:text-sm md:text-xs lg:text-base xl:text-base"><span className="font-bold">Price :</span> ${data.price}</li>
             <li>
-            <button className="btn btn-xs lg:btn-md w-full bg-red-600 hover:bg-red-600 text-white">Select</button>
+            <button disabled={isAdmin || isInstructor} className="btn btn-xs lg:btn-md w-full bg-red-600 hover:bg-red-600 text-white">Select</button>
             </li>
           </ul>
         </div>
