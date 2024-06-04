@@ -1,5 +1,5 @@
-* ### this project will be created for students sports website academy
-* ### here students choice here favourite sports and buy there classes
+* ### this project name is -> kids-academy
+* ### this project help the students they can buy there favourite coach classes who will teach the students her favourite sports
 * ### here are 3 types of person (admin,instructor,users)
 * ### here are two types section(website and dashboard)
 * ### here authentication for using google firebase
