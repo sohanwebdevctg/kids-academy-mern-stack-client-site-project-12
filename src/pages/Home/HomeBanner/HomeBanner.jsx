@@ -1,6 +1,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import useAuth from "../../../hooks/useAuth";
 
 
 
@@ -13,10 +14,13 @@ const HomeBanner = () => {
     slidesToShow: 1,
     slidesToScroll: 1
   };
+
+  // authProvider
+  const {color} = useAuth()
   
 
   return (
-    <div className='h-full sm:h-full md:h-80 lg:h-96 bgImage my-5 slider-container overflow-hidden'>
+    <div className='h-full sm:h-full md:h-80 lg:h-96 bgImage slider-container overflow-hidden'>
       <div className="container mx-auto h-full py-10">
       {/* content section start */}
       <Slider {...settings}>
@@ -31,15 +35,15 @@ const HomeBanner = () => {
           {/* service section start */}
           <ul className="flex gap-8 items-center">
             <li className="">
-              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center">+200</p>
+              <p className={`${color ? 'text-blue-600' : 'text-red-600'}  text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center`}>+200</p>
               <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Our Services</p>
             </li>
             <li className="">
-              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center">+49</p>
+              <p className={`${color ? 'text-blue-600' : 'text-red-600'}  text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center`}>+49</p>
               <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Favourite Instructor</p>
             </li>
             <li className="">
-              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold">+1000</p>
+              <p className={`${color ? 'text-blue-600' : 'text-red-600'}  text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center`}>+1000</p>
               <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Our Students</p>
             </li>
           </ul>
@@ -57,15 +61,15 @@ const HomeBanner = () => {
           {/* service section start */}
           <ul className="flex gap-8 items-center">
             <li className="">
-              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center">+200</p>
+              <p className={`${color ? 'text-blue-600' : 'text-red-600'}  text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center`}>+200</p>
               <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Our Services</p>
             </li>
             <li className="">
-              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center">+49</p>
+              <p className={`${color ? 'text-blue-600' : 'text-red-600'}  text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center`}>+49</p>
               <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Favourite Instructor</p>
             </li>
             <li className="">
-              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold">+1000</p>
+              <p className={`${color ? 'text-blue-600' : 'text-red-600'}  text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center`}>+1000</p>
               <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Our Students</p>
             </li>
           </ul>
@@ -83,15 +87,15 @@ const HomeBanner = () => {
           {/* service section start */}
           <ul className="flex gap-8 items-center">
             <li className="">
-              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center">+200</p>
+              <p className={`${color ? 'text-blue-600' : 'text-red-600'}  text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center`}>+200</p>
               <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Our Services</p>
             </li>
             <li className="">
-              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center">+49</p>
+              <p className={`${color ? 'text-blue-600' : 'text-red-600'}  text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center`}>+49</p>
               <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Favourite Instructor</p>
             </li>
             <li className="">
-              <p className="text-red-600 text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold">+1000</p>
+              <p className={`${color ? 'text-blue-600' : 'text-red-600'}  text-sm sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold text-center`}>+1000</p>
               <p className="text-white text-xs sm:text-base md:text-base lg:text-base xl:text-xs text-center">Our Students</p>
             </li>
           </ul>

@@ -1,4 +1,5 @@
 import InstructorsCard from "../../../components/InstructorsCard/InstructorsCard";
+import useAuth from "../../../hooks/useAuth";
 import useInstructors from "../../../hooks/useInstructors";
 
 
@@ -7,8 +8,11 @@ const AllInstructors = () => {
     // instructors data
     const [instructors] = useInstructors();
 
+    //authProvider
+    const {color} = useAuth()
+
   return (
-    <div className="h-full md:h-full px-5 py-16 md:py-14">
+    <div className={`${color ? 'bg-[#070709]' : 'bg-white'} h-full md:h-full px-5 py-16 md:py-14`}>
       {/* content section start */}
       <div className="container mx-auto h-full">
         {/* instructors card section start */}

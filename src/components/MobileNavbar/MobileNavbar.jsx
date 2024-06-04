@@ -2,6 +2,9 @@ import { Link, NavLink } from "react-router-dom";
 
 
 const MobileNavbar = () => {
+
+  
+
   return (
     <>
       <div className="navbar-center z-30">

@@ -15,11 +15,19 @@ const AuthProvider = ({children}) => {
   //auth
   const auth = getAuth(app);
 
+  // color
+  const [color, setColor] = useState(false)
+
   // user state
   const [user, setUser] = useState(null)
 
   // loading state
   const [loading, setLoading] = useState(false)
+
+  // toggle color
+  const toggleColor = () => {
+    setColor(!color)
+  }
 
   //google signIn
   const googleSignIn = () => {
@@ -80,7 +88,7 @@ const AuthProvider = ({children}) => {
   },[])
 
   // user info
-  const userInfo = {user, loading, signUp, logIn, updateUserProfile, googleSignIn, logOut}
+  const userInfo = {user,color, setColor,toggleColor, loading, signUp, logIn, updateUserProfile, googleSignIn, logOut}
 
   return (
     <AuthContext.Provider value={userInfo}>

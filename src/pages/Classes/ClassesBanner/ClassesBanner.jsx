@@ -1,6 +1,11 @@
 import students from '../../../../public/classes/students.png'
+import useAuth from './../../../hooks/useAuth';
 
 const ClassesBanner = () => {
+
+  // authProvider
+  const {color} = useAuth()
+
   return (
     <div className="bg-black py-10 lg:py-0">
       {/* content section start */}
@@ -16,8 +21,8 @@ const ClassesBanner = () => {
           {/* description section end */}
           {/* button section start */}
           <ul className='flex items-center gap-5'>
-            <li><button className="btn bg-red-600 hover:bg-red-600 text-white btn-md border-red-600 hover:border-red-600">See More</button></li>
-            <li><button className="btn btn-outline hover:bg-red-600 border-red-600 text-red-600 hover:text-white">Watch More</button></li>
+            <li><button className={` ${color ? 'bg-blue-700 hover:bg-blue-700 border-blue-700 hover:border-blue-700' : 'bg-red-600 hover:bg-red-600 border-red-600 hover:border-red-600'} btn   text-white btn-md  `}>See More</button></li>
+            <li><button className={` ${color ? 'hover:bg-blue-700 border-blue-700 text-blue-700' : 'hover:bg-red-600 border-red-600 text-red-600'} btn btn-outline  hover:text-white`}>Watch More</button></li>
           </ul>
           {/* button section end */}
           </div>
@@ -25,7 +30,7 @@ const ClassesBanner = () => {
           {/* right section start */}
           <div className='mt-10'>
             {/* image section start */}
-            <div className='bg-red-600 rounded-full overflow-hidden w-64 h-64 sm:w-96 sm:h-96 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:h-[400px] xl:w-[400px] mx-auto'>
+            <div className={`${color ? 'bg-blue-700' : 'bg-red-600' }  rounded-full overflow-hidden w-64 h-64 sm:w-96 sm:h-96 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:h-[400px] xl:w-[400px] mx-auto`}>
             <img className='w-64 h-64 sm:w-96 sm:h-96 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:h-[400px] xl:w-[400px] mx-auto' src={students}></img>
             </div>
             

@@ -1,6 +1,7 @@
 
 import ClassCard from './../../../components/ClassCard/ClassCard';
 import useAllClasses from "../../../hooks/useAllClasses";
+import useAuth from '../../../hooks/useAuth';
 
 
 const AllClasses = () => {
@@ -8,11 +9,14 @@ const AllClasses = () => {
   //allClasses
   const [allClasses] = useAllClasses();
 
+  //authProvider
+  const {color} = useAuth()
+
   // approved classes
   const approvedClasses = allClasses.filter((data) => data.status === 'approved')
 
   return (
-    <div className="h-full md:h-full px-5 py-16 md:py-14">
+    <div className={`${color ? 'bg-[#070709]' : 'bg-white'} h-full md:h-full px-5 py-16 md:py-14`}>
       {/* content section start */}
       <div className="container mx-auto h-full">
         {/* instructors card section start */}
