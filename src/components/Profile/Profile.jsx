@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const Profile = () => {
 
   // authProvider
-  const {user,logOut} = useAuth();
+  const {user,logOut, color} = useAuth();
 
   //navigate
   const navigate = useNavigate()
@@ -59,17 +59,17 @@ const Profile = () => {
               
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60 overflow-hidden"
+                className={`${color ? 'bg-[#161618]' : 'bg-base-100'} mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content  rounded-box w-60 overflow-hidden`}
               >
                 <li>
-                <p><strong>Name:</strong>{user?.displayName}</p>
-                <p><strong>Email:</strong>{user?.email}</p>
+                <p><strong className={`${color ? 'text-blue-700' : 'text-black'}`}>Name:</strong><span className={`${color ? 'text-gray-400' : 'text-black'}`}>{user?.displayName}</span></p>
+                <p><strong className={`${color ? 'text-blue-700' : 'text-black'}`}>Email:</strong><span className={`${color ? 'text-gray-400' : 'text-black'}`}>{user?.email}</span></p>
               </li>
                 <li className="block md:hidden">
                   <NavLink
                     to="/"
                     className={({ isActive }) =>
-                      isActive ? "text-red-700 font-medium" : "text-black"
+                      isActive ? `${color ? 'text-blue-700 font-medium' :'text-red-700 font-medium'}` : `${color ? 'text-white' : 'text-black'}`
                     }
                   >
                     Home
@@ -79,7 +79,7 @@ const Profile = () => {
                   <NavLink
                     to="/instructors"
                     className={({ isActive }) =>
-                      isActive ? "text-red-700 font-medium" : "text-black"
+                      isActive ? `${color ? 'text-blue-700 font-medium' :'text-red-700 font-medium'}` : `${color ? 'text-white' : 'text-black'}`
                     }
                   >
                     Instructor
@@ -89,7 +89,7 @@ const Profile = () => {
                   <NavLink
                     to="/classes"
                     className={({ isActive }) =>
-                      isActive ? "text-red-700 font-medium" : "text-black"
+                      isActive ? `${color ? 'text-blue-700 font-medium' :'text-red-700 font-medium'}` : `${color ? 'text-white' : 'text-black'}`
                     }
                   >
                     Classes
@@ -99,14 +99,14 @@ const Profile = () => {
                   <NavLink
                     to="/dashboard"
                     className={({ isActive }) =>
-                      isActive ? "text-red-700 font-medium" : "text-black"
+                      isActive ? `${color ? 'text-blue-700 font-medium' :'text-red-700 font-medium'}` : `${color ? 'text-white' : 'text-black'}`
                     }
                   >
                     Dashboard
                   </NavLink>
                 </li>
                 <li>
-                <button onClick={logOutBtn} className="bg-red-600 font-semibold px-3 py-1 rounded-md text-white w-24">
+                <button onClick={logOutBtn} className={`${color ? 'bg-blue-700 hover:bg-blue-700' : 'bg-red-600 hover:bg-red-600'}  font-semibold px-3 py-1 rounded-md text-white w-24`}>
                         LogOut
                       </button>
                 </li>

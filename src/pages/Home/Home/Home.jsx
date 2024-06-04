@@ -1,3 +1,4 @@
+import Title from "../../../components/Title/Title";
 import HomeBanner from "../HomeBanner/HomeBanner";
 import OurStudents from "../OurStudents/OurStudents";
 import PopularClasses from "../PopularClasses/PopularClasses";
@@ -8,6 +9,9 @@ import SportsGallery from "../SportsGallery/SportsGallery";
 const Home = () => {
   return (
     <div>
+      {/* title section start */}
+      <Title data={'Home'}></Title>
+      {/* title section end */}
       {/* content section start */}
       <HomeBanner></HomeBanner>
       {/* content section end */}

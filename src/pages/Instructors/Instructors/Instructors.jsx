@@ -1,4 +1,5 @@
 
+import Title from "../../../components/Title/Title";
 import AllInstructors from "../AllInstructors/AllInstructors";
 import InstructorsBanner from "../InstructorsBanner/InstructorsBanner";
 
@@ -6,6 +7,9 @@ import InstructorsBanner from "../InstructorsBanner/InstructorsBanner";
 const Instructors = () => {
   return (
     <div>
+      {/* title section start */}
+      <Title data={'Instructor'}></Title>
+      {/* title section end */}
       {/* content section start */}
       {/* banner section start */}
       <InstructorsBanner></InstructorsBanner>

@@ -4,6 +4,7 @@ import { FaUserShield } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useUsers from "../../../hooks/useUsers";
+import Title from "../../../components/Title/Title";
 
 const ManageUsers = () => {
 
@@ -77,6 +78,9 @@ const ManageUsers = () => {
 
   return (
     <div>
+      {/* title section start */}
+      <Title data={'Manage Users'}></Title>
+      {/* title section end */}
       {/* content section start */}
       <div className="container mx-auto py-20 px-5 sm:px-6 md:px-10 lg:px-10 xl:px-14">
         {/* title section start */}

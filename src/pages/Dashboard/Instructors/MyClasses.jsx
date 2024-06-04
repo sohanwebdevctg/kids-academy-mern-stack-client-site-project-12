@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useInstructorClass from "../../../hooks/useInstructorClass";
+import Title from "../../../components/Title/Title";
 
 const MyClasses = () => {
   const [instructorClass] = useInstructorClass();
@@ -20,6 +21,9 @@ const MyClasses = () => {
 
   return (
     <div>
+      {/* title section start */}
+      <Title data={'My Classes'}></Title>
+      {/* title section end */}
       {/* content section start */}
       <div className="container mx-auto py-20 px-5 sm:px-6 md:px-10 lg:px-10 xl:px-14">
         {/* title section start */}

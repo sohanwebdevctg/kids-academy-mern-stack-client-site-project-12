@@ -1,3 +1,4 @@
+import Title from '../../../components/Title/Title';
 import useAuth from './../../../hooks/useAuth';
 
 
@@ -12,6 +13,9 @@ const InstructorHome = () => {
 
   return (
     <div>
+      {/* title section start */}
+      <Title data={'Instructor Home'}></Title>
+      {/* title section end */}
       {/* content section start */}
       <div className="container mx-auto py-20 px-5 sm:px-6 md:px-10 lg:px-10 xl:px-14">
         {/* title section start */}

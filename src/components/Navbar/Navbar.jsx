@@ -77,7 +77,7 @@ const Navbar = () => {
       </div>
       {/* desktop section end */}
       {/* mobile section start */}
-      <div className="bg-white h-20 px-5 block md:hidden">
+      <div className={`${color ? 'bg-[#161618]' : 'bg-white ' } h-20 px-5 block md:hidden`}>
         {/* content section start */}
         <div className="container mx-auto h-full">
           {/* navbar section start */}

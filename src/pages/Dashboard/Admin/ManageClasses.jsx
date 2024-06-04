@@ -3,6 +3,7 @@ import useAllClasses from "../../../hooks/useAllClasses";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { MdDelete } from "react-icons/md";
 import { useState } from "react";
+import Title from "../../../components/Title/Title";
 
 const ManageClasses = () => {
   //axiosSecure
@@ -85,6 +86,9 @@ const ManageClasses = () => {
 
   return (
     <div>
+      {/* title section start */}
+      <Title data={'Manage Classes'}></Title>
+      {/* title section end */}
       {/* content section start */}
       <div className="container mx-auto py-20 px-5 sm:px-6 md:px-10 lg:px-10 xl:px-14">
         {/* title section start */}

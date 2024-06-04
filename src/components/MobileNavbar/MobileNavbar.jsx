@@ -1,9 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 
 const MobileNavbar = () => {
 
-  
+  // authProvider
+  const {color} = useAuth()
 
   return (
     <>
@@ -16,7 +18,7 @@ const MobileNavbar = () => {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
+                    className={`h-5 w-5 ${color ? 'text-gray-400' : 'text-black'}`}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -31,13 +33,13 @@ const MobileNavbar = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                  className={`${color ? 'bg-[#161618]' : 'bg-base-100'} menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52`}
                 >
                   <li>
                     <NavLink
                       to="/"
                       className={({ isActive }) =>
-                        isActive ? "text-red-700 font-medium" : "text-black"
+                        isActive ? `${color ? 'text-blue-700 font-medium' :'text-red-700 font-medium'}` : `${color ? 'text-white' : 'text-black'}`
                       }
                     >
                       Home
@@ -47,7 +49,7 @@ const MobileNavbar = () => {
                     <NavLink
                       to="/instructors"
                       className={({ isActive }) =>
-                        isActive ? "text-red-700 font-medium" : "text-black"
+                        isActive ? `${color ? 'text-blue-700 font-medium' :'text-red-700 font-medium'}` : `${color ? 'text-white' : 'text-black'}`
                       }
                     >
                       Instructor
@@ -57,7 +59,7 @@ const MobileNavbar = () => {
                     <NavLink
                       to="/classes"
                       className={({ isActive }) =>
-                        isActive ? "text-red-700 font-medium" : "text-black"
+                        isActive ? `${color ? 'text-blue-700 font-medium' :'text-red-700 font-medium'}` : `${color ? 'text-white' : 'text-black'}`
                       }
                     >
                       Classes
@@ -65,7 +67,7 @@ const MobileNavbar = () => {
                   </li>
                   <li>
                     <Link to="/login">
-                      <button className="bg-red-600 font-semibold px-3 py-1 rounded-md text-white">
+                      <button className={`${color ? 'bg-blue-700' : 'bg-red-600' }  font-semibold px-3 py-1 rounded-md text-white`}>
                         LogIn
                       </button>
                     </Link>
