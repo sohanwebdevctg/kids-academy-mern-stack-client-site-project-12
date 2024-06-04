@@ -1,8 +1,6 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* ### this project will be created for students sports website academy
+* ### here students choice here favourite sports and buy there classes
+* ### here are 3 types of person (admin,instructor,users)
+* ### here are two types section(website and dashboard)
+* ### here authentication for using google firebase
+* ### this project created by(react,vite, firebase, tailwind css, daisyui, react router,react icon, react slick, sweetalert2, slick slider,axios, etc..)
