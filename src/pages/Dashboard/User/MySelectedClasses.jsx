@@ -3,6 +3,7 @@ import useUserSelectedClasses from "../../../hooks/useUserSelectedClasses";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import Title from "../../../components/Title/Title";
+import { useNavigate } from "react-router-dom";
 
 
 const MySelectedClasses = () => {
@@ -10,8 +11,26 @@ const MySelectedClasses = () => {
   //axiosSecure
   const [axiosSecure] = useAxiosSecure()
 
+  //navigate
+  const navigate = useNavigate();
+
   //selected classes get
   const [userSelectedClasses,refetch] = useUserSelectedClasses();
+
+  // payment data get
+  const paymentFun = (data) => {
+    const checkClass = userSelectedClasses.find((item) => item._id === data._id)
+    console.log(checkClass)
+    if(checkClass.availableSeats <= 0){
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Seat are not available",
+      });
+    }else{
+      navigate(`/dashboard/payment/${data._id}`)
+    }
+  }
 
     //delete user in admin dashboard
     const deleteFund = (data) => {
@@ -58,6 +77,7 @@ const MySelectedClasses = () => {
         <th>Class Name</th>
         <th>Price</th>
         <th>Action</th>
+        <th>Payment</th>
       </tr>
     </thead>
     <tbody>
@@ -85,6 +105,9 @@ const MySelectedClasses = () => {
         <td>${data.price}</td>
         <td>
         <MdDelete onClick={() => deleteFund(data)} className="xl:text-3xl text-white bg-red-600 rounded-sm"></MdDelete>
+        </td>
+        <td>
+          <button onClick={() => paymentFun(data)} className="btn btn-sm btn-success text-white">Pay</button>
         </td>
       </tr>)
       }

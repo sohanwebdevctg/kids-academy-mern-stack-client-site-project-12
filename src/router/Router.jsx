@@ -21,6 +21,7 @@ import PaymentHistory from "../pages/Dashboard/User/PaymentHistory";
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import AdminRoute from "../privateRoute/AdminRoute";
 import InstructorRoute from "../privateRoute/InstructorRoute";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 
 
@@ -101,6 +102,10 @@ export const router = createBrowserRouter([
       {
         path: 'paymentHistory',
         element : <PaymentHistory></PaymentHistory>
+      },
+      {
+        path: 'payment/:id',
+        element: <PrivateRoute><Payment></Payment></PrivateRoute>
       }
     ]
   }
