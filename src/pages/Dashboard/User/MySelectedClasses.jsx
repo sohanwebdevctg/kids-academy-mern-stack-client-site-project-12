@@ -20,7 +20,6 @@ const MySelectedClasses = () => {
   // payment data get
   const paymentFun = (data) => {
     const checkClass = userSelectedClasses.find((item) => item._id === data._id)
-    console.log(checkClass)
     if(checkClass.availableSeats <= 0){
       Swal.fire({
         icon: "error",
