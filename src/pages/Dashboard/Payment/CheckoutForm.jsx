@@ -2,6 +2,8 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from './../../../hooks/useAxiosSecure';
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckoutForm = ({currentClass, refetch}) => {
@@ -12,6 +14,9 @@ const CheckoutForm = ({currentClass, refetch}) => {
   const elements = useElements();
   //error message
   const [error, setError] = useState('');
+
+  //navigate
+  const navigate = useNavigate()
 
   // client secret
   const [clientSecret, setClientSecret] = useState("")
@@ -76,7 +81,8 @@ const CheckoutForm = ({currentClass, refetch}) => {
         // inserted payment and enroll class
         const enrollClass = {
           selectedClassId : _id,
-          transactionId: paymentIntent.id, 
+          transactionId: paymentIntent.id,
+          email: user?.email,
           date: new Date(),
           price: price,
           instructorName,
@@ -87,7 +93,17 @@ const CheckoutForm = ({currentClass, refetch}) => {
 
         axiosSecure.post('/payments', enrollClass)
         .then((res) => {
-          console.log(res)
+          if(res.data.insertedId){
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "You payment was successfully added",
+              showConfirmButton: false,
+              timer: 1500
+            });
+            refetch()
+            navigate('/dashboard/myEnrollClasses')
+          }
         })
 
 
