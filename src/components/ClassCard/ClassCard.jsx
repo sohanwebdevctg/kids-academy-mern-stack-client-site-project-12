@@ -28,8 +28,10 @@ const ClassCard = ({data}) => {
   //select class
   const selectClass = (data) => {
 
+    
+
     if(user && user?.email){
-      const selectedClasses = {classId: data._id, email: user?.email, instructorEmail: data.instructorEmail, instructorName:data.instructorName,classImage: data.classImage, className: data.className, price: data.price}
+      const selectedClasses = {classId: data._id, email: user?.email, instructorEmail: data.instructorEmail, instructorName:data.instructorName,classImage: data.classImage, className: data.className, price: data.price, availableSeats : data.availableSeats}
 
       //select this card data from instructor to user
       axiosSecure.post('/selectedClass', selectedClasses)
