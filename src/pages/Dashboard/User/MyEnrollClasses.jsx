@@ -22,8 +22,6 @@ const MyEnrollClasses = () => {
     },
   })
 
-  console.log(enrollClasses)
-
   return (
     <div>
       {/* title section start */}
