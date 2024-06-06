@@ -1,11 +1,13 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from './../../../hooks/useAxiosSecure';
+import useAuth from "../../../hooks/useAuth";
 
 
 const CheckoutForm = ({currentClass, refetch}) => {
 
-
+  //authInfo
+  const {user} = useAuth();
   const stripe = useStripe();
   const elements = useElements();
   //error message
@@ -24,7 +26,7 @@ const CheckoutForm = ({currentClass, refetch}) => {
     if(price > 0){
       axiosSecure.post('/create-payment-intent', {price})
     .then((res) => {
-      setClientSecret(res.data.client_secret)
+      setClientSecret(res.data.clientSecret)
     })
     }
   },[axiosSecure, price])
@@ -43,6 +45,7 @@ const CheckoutForm = ({currentClass, refetch}) => {
       return;
     }
 
+    //payment method
     const {error, paymentMethod} = await stripe.createPaymentMethod({
       type: 'card',
       card
@@ -53,6 +56,26 @@ const CheckoutForm = ({currentClass, refetch}) => {
     }else{
       console.log(paymentMethod)
       setError('');
+    }
+
+    // confirmCardPayment 
+    const {paymentIntent,error: confirmError} = await stripe.confirmCardPayment(clientSecret,{
+      payment_method:{
+        card: card,
+        billing_details:{
+          name : user?.displayName || 'unauthorized',
+          email : user?.email || 'unauthorized'
+        }
+      }
+    })
+    //confirm payment
+    if(confirmError){
+      console.log('confirm error')
+    }else{
+      if(paymentIntent.status === 'succeeded'){
+        console.log(paymentIntent.id)
+
+      }
     }
 
   }
