@@ -2,6 +2,10 @@ import { useParams } from "react-router-dom";
 import useUserSelectedClasses from "../../../hooks/useUserSelectedClasses";
 import Title from "../../../components/Title/Title";
 import { useEffect, useState } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "./CheckoutForm";
+
 
 
 const Payment = () => {
@@ -21,6 +25,9 @@ const Payment = () => {
   // current selected classes
   const [currentClass, setCurrentClass] = useState(null);
 
+  //stripe key
+  const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
+
   return (
     <div>
       {/* title section start */}
@@ -34,8 +41,10 @@ const Payment = () => {
       </div>
       {/* title section end */}
       {/* details section start */}
-      <div className="mt-5">
-        <p>payment</p>
+      <div className="mt-5 w-1/2 bg-slate-100 p-5 mx-auto">
+        <Elements stripe={stripePromise}>
+          <CheckoutForm></CheckoutForm>
+        </Elements>
       </div>
       {/* details section end */}
       </div>
