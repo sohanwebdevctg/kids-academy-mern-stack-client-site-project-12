@@ -1,13 +1,33 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAxiosSecure from './../../../hooks/useAxiosSecure';
 
 
-const CheckoutForm = () => {
+const CheckoutForm = ({currentClass, refetch}) => {
+
 
   const stripe = useStripe();
   const elements = useElements();
+  //error message
+  const [error, setError] = useState('');
 
-  const [error, setError] = useState('')
+  // client secret
+  const [clientSecret, setClientSecret] = useState("")
+
+  //card data
+  const {_id, price,  classImage, className, classId} = currentClass;
+
+  const [axiosSecure] = useAxiosSecure()
+
+  // create-payment-intent
+  useEffect(() => {
+    if(price > 0){
+      axiosSecure.post('/create-payment-intent', {price})
+    .then((res) => {
+      setClientSecret(res.data.client_secret)
+    })
+    }
+  },[axiosSecure, price])
 
   // formData
   const handleSubmit = async (event) => {
@@ -29,9 +49,10 @@ const CheckoutForm = () => {
     });
 
     if(error){
-      setError(error.message)
+      setError(error.message);
     }else{
       console.log(paymentMethod)
+      setError('');
     }
 
   }
@@ -57,7 +78,7 @@ const CheckoutForm = () => {
       }}
       ></CardElement>
       <div>
-      <button className="btn btn-sm btn-error mt-3" type="submit" disabled={!stripe}>Pay</button>
+      <button className="btn btn-sm btn-error mt-3" type="submit" disabled={!stripe || !clientSecret}>Pay</button>
       </div>
       <p className="text-red-500">{error}</p>
     </form>

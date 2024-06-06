@@ -42,9 +42,11 @@ const Payment = () => {
       {/* title section end */}
       {/* details section start */}
       <div className="mt-5 w-1/2 bg-slate-100 p-5 mx-auto">
-        <Elements stripe={stripePromise}>
-          <CheckoutForm></CheckoutForm>
+        {
+          currentClass && <Elements stripe={stripePromise}>
+          <CheckoutForm currentClass={currentClass} refetch={refetch}></CheckoutForm>
         </Elements>
+        }
       </div>
       {/* details section end */}
       </div>
