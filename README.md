@@ -4,3 +4,4 @@
 * ### here are two types section(website and dashboard)
 * ### here authentication for using google firebase
 * ### this project created by(react,vite, firebase, tailwind css, daisyui, react router,react icon, react slick, sweetalert2, slick slider,axios,helmet, etc..)
+* ### this project we are using payment methods(stripe)
