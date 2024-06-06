@@ -17,7 +17,7 @@ const CheckoutForm = ({currentClass, refetch}) => {
   const [clientSecret, setClientSecret] = useState("")
 
   //card data
-  const {_id, price,  classImage, className, classId} = currentClass;
+  const {_id, price,  classImage, className, classId, instructorName} = currentClass;
 
   const [axiosSecure] = useAxiosSecure()
 
@@ -73,7 +73,23 @@ const CheckoutForm = ({currentClass, refetch}) => {
       console.log('confirm error')
     }else{
       if(paymentIntent.status === 'succeeded'){
-        console.log(paymentIntent.id)
+        // inserted payment and enroll class
+        const enrollClass = {
+          selectedClassId : _id,
+          transactionId: paymentIntent.id, 
+          date: new Date(),
+          price: price,
+          instructorName,
+          classImage, 
+          className, 
+          classId
+        }
+
+        axiosSecure.post('/payments', enrollClass)
+        .then((res) => {
+          console.log(res)
+        })
+
 
       }
     }
