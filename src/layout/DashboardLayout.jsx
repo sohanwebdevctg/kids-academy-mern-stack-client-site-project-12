@@ -21,7 +21,7 @@ const DashboardLayout = () => {
 
 
   //admin links
-  const admin = <ul className="space-y-1">
+  const admin = <ul className="space-y-1 mt-5">
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="/dashboard/adminHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>Admin Home</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="manageClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><LuMonitorDot></LuMonitorDot><span>Manage Classes</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="manageUsers" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaUsersCog></FaUsersCog><span>Manage Users</span></NavLink></li>
@@ -30,7 +30,7 @@ const DashboardLayout = () => {
 
 
 //instructors links
-  const instructors = <ul className="space-y-1">
+  const instructors = <ul className="space-y-1 mt-5">
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="/dashboard/instructorHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>Instructor Home</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="addAClass" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><MdAddChart></MdAddChart><span>Add A Class</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="myClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><TbKeyboardShow></TbKeyboardShow><span>My Classes</span></NavLink></li>
@@ -39,7 +39,7 @@ const DashboardLayout = () => {
 
 
 // user links
-  const user = <ul className="space-y-1">
+  const user = <ul className="space-y-1 mt-5">
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="/dashboard/userHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>User Home</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="mySelectedClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><BsPersonVideo3></BsPersonVideo3><span>My Selected Classes</span></NavLink></li>
   <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="myEnrollClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><BsPersonVideo2></BsPersonVideo2><span>My Enroll Classes</span></NavLink></li>
@@ -54,11 +54,23 @@ const DashboardLayout = () => {
   </ul>
 
   return (
-    <div className="h-screen">
+    <div>
       {/* content section start */}
-      <div className="flex justify-between items-center h-screen">
-        {/* sidebar section start */}
-        <div className="w-[15%] bg-red-700 h-screen space-y-5 p-5">
+      <div className="drawer lg:drawer-open">
+  <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+  <div className="drawer-content flex flex-col items-center justify-center">
+    {/* content section start */}
+    <div className="bg-white w-full">
+          <Outlet></Outlet>
+        </div>
+        {/* content section end */}
+    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+  </div> 
+  <div className="drawer-side">
+    <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label> 
+    <ul className="bg-red-700 space-y-5 p-5 w-72 h-full ">
+      {/* sidebar section start */}
+      <div className="h-full flex-col items-center justify-center">
         {/* logo section start */}
         <Link to="/">
         <img src={logo} className="w-[45%] h-[7%] mx-auto"></img>
@@ -81,12 +93,10 @@ const DashboardLayout = () => {
         {/* common link section end */}
         </div>
         {/* sidebar section end */}
-        {/* content section start */}
-        <div className="w-[85%] bg-white h-screen">
-          <Outlet></Outlet>
-        </div>
-        {/* content section end */}
-      </div>
+    </ul>
+  
+  </div>
+</div>
       {/* content section end */}
     </div>
   );

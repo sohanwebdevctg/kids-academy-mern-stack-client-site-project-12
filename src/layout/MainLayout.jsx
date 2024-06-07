@@ -11,7 +11,9 @@ const MainLayout = () => {
         <Navbar></Navbar>
         {/* navbar section end */}
         {/* content section start */}
-        <Outlet></Outlet>
+        <div className="pt-16">
+          <Outlet></Outlet>
+        </div>
         {/* content section end */}
         {/* footer section start */}
         <Footer></Footer>

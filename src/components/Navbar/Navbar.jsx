@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <>
       {/* desktop section start */}
-      <div className={`${color ? 'bg-[#161618]' : 'bg-white'} h-20 hidden md:block`}>
+      <div className={`${color ? 'bg-[#161618]' : 'bg-white'} h-20 hidden md:block fixed w-full z-10 right-0 left-0`}>
         {/* content section start */}
         <div className="container mx-auto h-full">
           {/* navbar section start */}
@@ -77,7 +77,7 @@ const Navbar = () => {
       </div>
       {/* desktop section end */}
       {/* mobile section start */}
-      <div className={`${color ? 'bg-[#161618]' : 'bg-white ' } h-20 px-5 block md:hidden`}>
+      <div className={`${color ? 'bg-[#161618]' : 'bg-white ' } h-20 px-5 block md:hidden fixed w-full right-0 left-0 z-30`}>
         {/* content section start */}
         <div className="container mx-auto h-full">
           {/* navbar section start */}

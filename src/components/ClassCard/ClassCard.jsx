@@ -71,7 +71,7 @@ const ClassCard = ({data}) => {
         <div className="p-2 sm:p-3 md:p-2 lg:p-5">
         <img src={data.classImage} className="h-32 sm:h-36 md:h-36 lg:h-44 xl:h-48 w-full rounded-lg"></img>
         </div>
-        <div className="w-full p-1 sm:p-2 md:p-2 lg:p-5 ">
+        <div className="w-full p-1 sm:p-2 md:p-2 lg:p-5 flex-col items-end">
           <ul className="space-y-2">
             <li className="text-[9px] sm:text-sm md:text-xs lg:text-base xl:text-base"><span className={`${color ? 'text-blue-700' : 'text-black'} font-bold`}>Class Name :</span> <span className={`${color ? 'text-gray-400' : 'text-black'}`}>{data.className}</span></li>
             <li className="text-[9px] sm:text-sm md:text-xs lg:text-base xl:text-base"><span className={`${color ? 'text-blue-700' : 'text-black'} font-bold`}>Instructor Name :</span> <span className={`${color ? 'text-gray-400' : 'text-black'}`}>{data.instructorName}</span></li>
