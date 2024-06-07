@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import logo from '../../public/logo/logo.png';
 import { FaHome, FaHouseUser, FaUsersCog } from "react-icons/fa";
 import { IoPerson } from "react-icons/io5";
@@ -10,6 +10,9 @@ import { FaMoneyBillTrendUp, FaUsersGear } from "react-icons/fa6";
 import { LuMonitorDot } from "react-icons/lu";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
+import { FiLogOut } from "react-icons/fi";
+import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const DashboardLayout = () => {
 
@@ -18,6 +21,43 @@ const DashboardLayout = () => {
 
   //instructor role
   const [isInstructor] = useInstructor();
+
+    // authProvider
+    const {logOut} = useAuth();
+
+    //navigate
+    const navigate = useNavigate()
+  
+    //logOutBtn
+    const logOutBtn = () => {
+      // logout swal
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You want to log out?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, logOut"
+      }).then((result) => {
+        if (result.isConfirmed) {
+      logOut()
+      .then(() => {
+        // navigate
+        navigate('/')
+        // message
+        Swal.fire({
+          title: "logOut",
+          text: "Your are logout now!",
+          icon: "success"
+        });
+      })
+        }
+      });
+      
+    }
+
+  
 
 
   //admin links
@@ -70,7 +110,7 @@ const DashboardLayout = () => {
     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label> 
     <ul className="bg-red-700 space-y-5 p-5 w-72 h-full ">
       {/* sidebar section start */}
-      <div className="h-full flex-col items-center justify-center">
+      <div className="h-full">
         {/* logo section start */}
         <Link to="/">
         <img src={logo} className="w-[45%] h-[7%] mx-auto"></img>
@@ -91,6 +131,14 @@ const DashboardLayout = () => {
         {common}
         </ul>
         {/* common link section end */}
+        <ul>
+          <div className="divider"></div>
+        </ul>
+        <div>
+          {/* logout btn start */}
+          <button onClick={logOutBtn} className="btn btn-sm btn-neutral"><FiLogOut className="text-white text-xl"></FiLogOut>LogOut</button>
+          {/* logout btn end */}
+        </div>
         </div>
         {/* sidebar section end */}
     </ul>
