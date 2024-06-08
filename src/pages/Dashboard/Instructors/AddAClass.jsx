@@ -23,7 +23,7 @@ const AddAClass = () => {
 
   // form data
   const onSubmit = (data) => {
-    
+    // form data
     const instructorName = data.instructorName;
     const instructorEmail = data.instructorEmail;
     const className = data.className;
@@ -97,7 +97,7 @@ const AddAClass = () => {
                   type="text"
                   placeholder="enter user name"
                   className="input input-bordered"
-                  defaultValue={user.displayName}
+                  defaultValue={user?.displayName}
                   {...register("instructorName", { required: true })}
                 />
                 {errors.instructorName && <span>This field is required</span>}
@@ -112,7 +112,7 @@ const AddAClass = () => {
                   type="email"
                   placeholder="enter user email"
                   className="input input-bordered"
-                  defaultValue={user.email}
+                  defaultValue={user?.email}
                   {...register("instructorEmail", { required: true })}
                 />
                 {errors.instructorEmail && <span>This field is required</span>}

@@ -12,7 +12,7 @@ const useUsers = () => {
   const {loading} = useAuth()
 
    //fetch user data
-  const { data : users = [], refetch } = useQuery({
+  const { data : users = [], refetch, isLoading: isUserLoading } = useQuery({
     queryKey: ['users'],
     enabled: !loading,
     queryFn: async () => {
@@ -21,7 +21,7 @@ const useUsers = () => {
     },
   })
 
-  return [users,refetch]
+  return [users,refetch, isUserLoading]
 };
 
 export default useUsers;

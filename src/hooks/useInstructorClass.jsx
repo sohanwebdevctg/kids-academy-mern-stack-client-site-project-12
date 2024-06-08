@@ -8,9 +8,9 @@ const useInstructorClass = () => {
   const [axiosSecure] = useAxiosSecure();
 
   //auhProvider
-  const {user, loading} = useAuth();
+  const {user,loading} = useAuth();
 
-  const { data : instructorClass = [], refetch } = useQuery({
+  const { data : instructorClass = [], refetch, isLoading: isInstructorLoading } = useQuery({
     queryKey: ['instructorClass', user?.email],
     enabled: !loading,
     queryFn: async () => {
@@ -19,7 +19,7 @@ const useInstructorClass = () => {
     },
   })
 
-  return [instructorClass, refetch]
+  return [instructorClass, refetch, isInstructorLoading]
 };
 
 export default useInstructorClass;

@@ -7,6 +7,7 @@ const AdminHome = () => {
     //role details
     const {user} = useAuth();
 
+
   return (
     <div>
       {/* title section start */}
@@ -23,14 +24,14 @@ const AdminHome = () => {
         <div className="flex justify-center items-center gap-10 bg-slate-200 shadow-lg mt-5 py-5 w-2/3 mx-auto">
           {/* image section start */}
           <div className='text-center '>
-            <img src={user.photoURL} className='w-44 h-44 rounded-full'></img>
+            <img src={user?.photoURL} className='w-44 h-44 rounded-full'></img>
           </div>
           {/* image section end */}
           {/* description section start */}
           <div>
             <ul>
-              <li className='text-3xl'><span className='font-bold'>Name:</span> {user.displayName}</li>
-              <li className='text-3xl'><span className='font-bold'>Email:</span> {user.email}</li>
+              <li className='text-3xl'><span className='font-bold'>Name:</span> {user?.displayName}</li>
+              <li className='text-3xl'><span className='font-bold'>Email:</span> {user?.email}</li>
             </ul>
           </div>
           {/* description section end */}

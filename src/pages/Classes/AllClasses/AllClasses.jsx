@@ -2,6 +2,7 @@
 import ClassCard from './../../../components/ClassCard/ClassCard';
 import useAllClasses from "../../../hooks/useAllClasses";
 import useAuth from '../../../hooks/useAuth';
+import LoadingPage from './../../../components/LoadingPage/LoadingPage';
 
 
 const AllClasses = () => {
@@ -14,6 +15,11 @@ const AllClasses = () => {
 
   // approved classes
   const approvedClasses = allClasses.filter((data) => data.status === 'approved')
+
+  //loading state
+  if(!approvedClasses){
+    return <LoadingPage></LoadingPage>
+  }
 
   return (
     <div className={`${color ? 'bg-[#070709]' : 'bg-white'} h-full md:h-full px-5 py-16 md:py-14`}>

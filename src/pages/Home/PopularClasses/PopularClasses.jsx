@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import ClassCard from "../../../components/ClassCard/ClassCard";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import LoadingPage from "../../../components/LoadingPage/LoadingPage";
 
 
 const PopularClasses = () => {
@@ -10,10 +11,10 @@ const PopularClasses = () => {
   const [axiosSecure] = useAxiosSecure()
 
   //authProvider
-  const {color, loading} = useAuth()
+  const {color, loading} = useAuth();
 
     // approved classes
-    const { data: approvedClasses = [] } = useQuery({
+    const { data: approvedClasses = [], isLoading: isClassLoading } = useQuery({
       queryKey: ['approvedClasses'],
       enabled: !loading,
       queryFn: async () => {
@@ -21,6 +22,11 @@ const PopularClasses = () => {
         return res.data;
       },
     })
+
+    //loading state
+    if(isClassLoading){
+      return <LoadingPage></LoadingPage>
+    }
 
   return (
     <div className={`${color ? 'bg-[#070709]' : 'bg-white'} h-full md:h-full px-5 py-16 md:py-14`}>

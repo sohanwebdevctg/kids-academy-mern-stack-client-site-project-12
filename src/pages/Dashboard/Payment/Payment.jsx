@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
+import LoadingPage from "../../../components/LoadingPage/LoadingPage";
 
 
 
@@ -14,7 +15,7 @@ const Payment = () => {
   const {id} = useParams();
 
   //selected classes get
-  const [userSelectedClasses,refetch] = useUserSelectedClasses();
+  const [userSelectedClasses,refetch, isUserClassLoading] = useUserSelectedClasses();
   
   //condition
   useEffect(() => {
@@ -27,6 +28,10 @@ const Payment = () => {
 
   //stripe key
   const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
+
+  if(!isUserClassLoading){
+    return <LoadingPage></LoadingPage>
+  }
 
   return (
     <div>

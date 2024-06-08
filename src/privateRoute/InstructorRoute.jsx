@@ -13,6 +13,9 @@ const InstructorRoute = ({children}) => {
     // admin data
     const [isInstructor, isInstructorLoading] = useInstructor();
 
+    // token
+    const token = localStorage.getItem('token');
+
     // navigate the location
     const location = useLocation()
   
@@ -22,11 +25,11 @@ const InstructorRoute = ({children}) => {
     }
   
     //user
-    if(user && isInstructor){
-      return children;
+    if(!user && !isInstructor && !token){
+      return <Navigate to="/" state={{from: location}} replace></Navigate>
     }
-  
-    return <Navigate to="/" state={{from: location}} replace></Navigate>
+    
+    return children;
 
 
 

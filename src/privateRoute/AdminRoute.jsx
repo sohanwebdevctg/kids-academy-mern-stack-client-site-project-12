@@ -11,6 +11,9 @@ const AdminRoute = ({children}) => {
     // admin data
     const [isAdmin, isAdminLoading] = useAdmin();
 
+    //token
+    const token = localStorage.getItem('token')
+
     // navigate the location
     const location = useLocation()
   
@@ -20,11 +23,11 @@ const AdminRoute = ({children}) => {
     }
   
     //user
-    if(user && isAdmin){
-      return children;
+    if(!user && !isAdmin && !token){
+      return <Navigate to="/" state={{from: location}} replace></Navigate>
     }
-  
-    return <Navigate to="/" state={{from: location}} replace></Navigate>
+    
+    return children;
   };
 
 export default AdminRoute;

@@ -4,18 +4,24 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { MdDelete } from "react-icons/md";
 import { useState } from "react";
 import Title from "../../../components/Title/Title";
+import LoadingPage from './../../../components/LoadingPage/LoadingPage';
 
 const ManageClasses = () => {
   //axiosSecure
   const [axiosSecure] = useAxiosSecure();
 
   //allClasses data
-  const [allClasses, refetch] = useAllClasses();
+  const [allClasses, refetch, isClassLoading] = useAllClasses();
 
   // userId
   const [userId,setUserId] = useState(null)
   // toggle data
   const [open, setOpen] = useState(false)
+
+  // loading state
+  if(isClassLoading){
+    return <LoadingPage></LoadingPage>
+  }
 
   //approvedStatus
   const approvedStatusFun = (data) => {

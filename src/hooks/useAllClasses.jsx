@@ -11,7 +11,7 @@ const useAllClasses = () => {
   const {loading} = useAuth()
 
    //fetch user data
-  const { data : allClasses = [], refetch } = useQuery({
+  const { data : allClasses = [], refetch, isLoading: isClassLoading } = useQuery({
     queryKey: ['allClasses'],
     enabled: !loading,
     queryFn: async () => {
@@ -20,7 +20,7 @@ const useAllClasses = () => {
     },
   })
 
-  return [allClasses,refetch]
+  return [allClasses,refetch, isClassLoading]
 };
 
 export default useAllClasses;

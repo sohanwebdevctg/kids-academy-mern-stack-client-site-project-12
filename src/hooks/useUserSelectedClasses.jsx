@@ -11,7 +11,7 @@ const useUserSelectedClasses = () => {
      const {user,loading} = useAuth()
    
       //fetch user data
-     const { data : userSelectedClasses = [], refetch } = useQuery({
+     const { data : userSelectedClasses = [], refetch, isLoading: isUserClassLoading } = useQuery({
        queryKey: ['selectedClasses', user?.email],
        enabled: !loading,
        queryFn: async () => {
@@ -20,7 +20,7 @@ const useUserSelectedClasses = () => {
        },
      })
    
-     return [userSelectedClasses,refetch]
+     return [userSelectedClasses,refetch,isUserClassLoading]
 };
 
 export default useUserSelectedClasses;

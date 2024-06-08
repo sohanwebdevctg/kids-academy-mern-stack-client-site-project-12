@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import Title from "../../../components/Title/Title";
 import { useNavigate } from "react-router-dom";
+import LoadingPage from './../../../components/LoadingPage/LoadingPage';
 
 
 const MySelectedClasses = () => {
@@ -15,7 +16,7 @@ const MySelectedClasses = () => {
   const navigate = useNavigate();
 
   //selected classes get
-  const [userSelectedClasses,refetch] = useUserSelectedClasses();
+  const [userSelectedClasses,refetch,isUserClassLoading] = useUserSelectedClasses();
 
   // payment data get
   const paymentFun = (data) => {
@@ -51,6 +52,10 @@ const MySelectedClasses = () => {
       })
 
       
+    }
+
+    if(isUserClassLoading){
+      return <LoadingPage></LoadingPage>
     }
 
   return (

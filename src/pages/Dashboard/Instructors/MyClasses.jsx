@@ -1,11 +1,10 @@
 import { useState } from "react";
 import useInstructorClass from "../../../hooks/useInstructorClass";
 import Title from "../../../components/Title/Title";
+import LoadingPage from './../../../components/LoadingPage/LoadingPage';
 
 const MyClasses = () => {
-  const [instructorClass] = useInstructorClass();
-
-  console.log(instructorClass);
+  const [instructorClass, isInstructorLoading] = useInstructorClass();
 
   // toggle data
   const [open, setOpen] = useState(false);
@@ -18,6 +17,10 @@ const MyClasses = () => {
     const feedbackData = instructorClass.find((value) => value._id === data._id)
     setFeedBack(feedbackData.feedback)
   };
+
+  if(!isInstructorLoading){
+    return <LoadingPage></LoadingPage>
+  }
 
   return (
     <div>

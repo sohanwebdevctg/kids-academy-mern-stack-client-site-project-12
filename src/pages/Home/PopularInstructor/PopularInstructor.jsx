@@ -3,16 +3,21 @@ import useAuth from "../../../hooks/useAuth";
 import useInstructors from "../../../hooks/useInstructors";
 import { motion } from "framer-motion"
 import {fadeIn} from '../../../variants'
+import LoadingPage from './../../../components/LoadingPage/LoadingPage';
 
 
 
 const PopularInstructor = () => {
 
   // instructors data
-  const [instructors] = useInstructors();
+  const [instructors, isInstructorLoading] = useInstructors();
 
   // authProvider
   const {color} = useAuth()
+  // set loading
+  if(isInstructorLoading){
+    return <LoadingPage></LoadingPage>
+  }
   
 
   return (

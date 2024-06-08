@@ -1,15 +1,21 @@
 import InstructorsCard from "../../../components/InstructorsCard/InstructorsCard";
 import useAuth from "../../../hooks/useAuth";
 import useInstructors from "../../../hooks/useInstructors";
+import LoadingPage from './../../../components/LoadingPage/LoadingPage';
 
 
 const AllInstructors = () => {
 
     // instructors data
-    const [instructors] = useInstructors();
+    const [instructors, isInstructorLoading] = useInstructors();
 
     //authProvider
     const {color} = useAuth()
+
+    //loading state
+    if(isInstructorLoading){
+      return <LoadingPage></LoadingPage>
+    }
 
   return (
     <div className={`${color ? 'bg-[#070709]' : 'bg-white'} h-full md:h-full px-5 py-16 md:py-14`}>

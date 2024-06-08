@@ -13,7 +13,7 @@ const useInstructors = () => {
   //authProvider
   const {loading} = useAuth()
 
-  const { data : instructors = [] } = useQuery({
+  const { data : instructors = [], isLoading: isInstructorLoading } = useQuery({
     queryKey: ['instructor'],
     enabled: !loading,
     queryFn: async () => {
@@ -23,7 +23,7 @@ const useInstructors = () => {
     }
   })
 
-  return [instructors]
+  return [instructors, isInstructorLoading]
 };
 
 export default useInstructors;

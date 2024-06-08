@@ -13,6 +13,8 @@ import useInstructor from "../hooks/useInstructor";
 import { FiLogOut } from "react-icons/fi";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Bounce } from "react-awesome-reveal";
+
 
 const DashboardLayout = () => {
 
@@ -23,7 +25,7 @@ const DashboardLayout = () => {
   const [isInstructor] = useInstructor();
 
     // authProvider
-    const {logOut} = useAuth();
+    const {logOut,user, loading} = useAuth();
 
     //navigate
     const navigate = useNavigate()
@@ -57,40 +59,37 @@ const DashboardLayout = () => {
       
     }
 
-  
-
-
   //admin links
   const admin = <ul className="space-y-1 mt-5">
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="/dashboard/adminHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>Admin Home</span></NavLink></li>
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="manageClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><LuMonitorDot></LuMonitorDot><span>Manage Classes</span></NavLink></li>
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="manageUsers" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaUsersCog></FaUsersCog><span>Manage Users</span></NavLink></li>
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="manageStudents" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaUsersGear></FaUsersGear><span>Manage Students</span></NavLink></li>
+<li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="adminHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><Bounce><FaHouseUser></FaHouseUser></Bounce><span>Admin Home</span></NavLink></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="manageClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><Bounce><LuMonitorDot></LuMonitorDot></Bounce><span>Manage Classes</span></NavLink></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="manageUsers" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><Bounce><FaUsersCog></FaUsersCog></Bounce><span>Manage Users</span></NavLink></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="manageStudents" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><Bounce><FaUsersGear></FaUsersGear></Bounce><span>Manage Students</span></NavLink></li>
   </ul>
 
 
 //instructors links
   const instructors = <ul className="space-y-1 mt-5">
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="/dashboard/instructorHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>Instructor Home</span></NavLink></li>
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="addAClass" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><MdAddChart></MdAddChart><span>Add A Class</span></NavLink></li>
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="myClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><TbKeyboardShow></TbKeyboardShow><span>My Classes</span></NavLink></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="instructorHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><Bounce><FaHouseUser></FaHouseUser></Bounce><span>Instructor Home</span></NavLink></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="addAClass" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><Bounce><MdAddChart></MdAddChart></Bounce><span>Add A Class</span></NavLink></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="myClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><Bounce><TbKeyboardShow></TbKeyboardShow></Bounce><span>My Classes</span></NavLink></li>
   </ul>
 
 
 
 // user links
-  const user = <ul className="space-y-1 mt-5">
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="/dashboard/userHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaHouseUser></FaHouseUser><span>User Home</span></NavLink></li>
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="mySelectedClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><BsPersonVideo3></BsPersonVideo3><span>My Selected Classes</span></NavLink></li>
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="myEnrollClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><BsPersonVideo2></BsPersonVideo2><span>My Enroll Classes</span></NavLink></li>
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="paymentHistory" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><FaMoneyBillTrendUp></FaMoneyBillTrendUp><span>Payment History</span></NavLink></li>
+  const users = <ul className="space-y-1 mt-5">
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="userHome" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><Bounce><FaHouseUser></FaHouseUser></Bounce><span>User Home</span></NavLink></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="mySelectedClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><Bounce><BsPersonVideo3></BsPersonVideo3></Bounce><span>My Selected Classes</span></NavLink></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="myEnrollClasses" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><Bounce><BsPersonVideo2></BsPersonVideo2></Bounce><span>My Enroll Classes</span></NavLink></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="paymentHistory" className={({ isActive }) => isActive ? "text-white font-medium flex items-center gap-2" : "text-black flex items-center gap-2"}><Bounce><FaMoneyBillTrendUp></FaMoneyBillTrendUp></Bounce><span>Payment History</span></NavLink></li>
   </ul>
 
   //common links
   const common = <ul className="space-y-1">
-  <li className="md:text-xs lg:text-sm xl:text-sm"><Link to="/" className= "text-white font-medium flex items-center gap-2"><FaHome></FaHome><span>Home</span></Link></li>
-  <li className="md:text-xs lg:text-sm xl:text-sm"><Link to="/instructors" className= "text-white font-medium flex items-center gap-2"><IoPerson></IoPerson><span>Instructors</span></Link></li>
-  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="/classes" className= "text-white font-medium flex items-center gap-2"><SiGoogleclassroom></SiGoogleclassroom><span>Classes</span></NavLink></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><Link to="/" className= "text-white font-medium flex items-center gap-2"><Bounce><FaHome></FaHome></Bounce><span>Home</span></Link></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><Link to="/instructors" className= "text-white font-medium flex items-center gap-2"><Bounce><IoPerson></IoPerson></Bounce><span>Instructors</span></Link></li>
+  <li className="md:text-xs lg:text-sm xl:text-sm"><NavLink to="/classes" className= "text-white font-medium flex items-center gap-2"><Bounce><SiGoogleclassroom></SiGoogleclassroom></Bounce><span>Classes</span></NavLink></li>
   </ul>
 
   return (
@@ -122,7 +121,7 @@ const DashboardLayout = () => {
         {/* instructor link section start */}
         {isInstructor === true ? instructors : ''}
         {/* instructor link section end */}
-        {isAdmin || isInstructor === false && user }
+        {isAdmin || isInstructor === false && users }
         <ul>
           <div className="divider"></div>
         </ul>

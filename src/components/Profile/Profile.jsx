@@ -1,10 +1,18 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from './../../hooks/useAuth';
 import Swal from "sweetalert2";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 
 const Profile = () => {
 
+
+  // admin role
+  const [isAdmin] = useAdmin();
+
+    //instructor role
+    const [isInstructor] = useInstructor();
   // authProvider
   const {user,logOut, color} = useAuth();
 
@@ -96,16 +104,40 @@ const Profile = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
-                    to="/dashboard"
+                  {
+                    isAdmin && <NavLink
+                    to="/dashboard/adminHome"
                     className={({ isActive }) =>
                       isActive ? `${color ? 'text-blue-700 font-medium' :'text-red-700 font-medium'}` : `${color ? 'text-white' : 'text-black'}`
                     }
                   >
                     Dashboard
                   </NavLink>
+                  }
                 </li>
+                  <li>
+                  {
+                    isInstructor && <NavLink
+                    to="/dashboard/instructorHome"
+                    className={({ isActive }) =>
+                      isActive ? `${color ? 'text-blue-700 font-medium' :'text-red-700 font-medium'}` : `${color ? 'text-white' : 'text-black'}`
+                    }
+                  >
+                    Dashboard
+                  </NavLink>
+                  }
+                  </li>
                 <li>
+                  {
+                    isAdmin || isInstructor === false && <NavLink
+                    to="/dashboard/userHome"
+                    className={({ isActive }) =>
+                      isActive ? `${color ? 'text-blue-700 font-medium' :'text-red-700 font-medium'}` : `${color ? 'text-white' : 'text-black'}`
+                    }
+                  >
+                    Dashboard
+                  </NavLink>
+                  }
                 <button onClick={logOutBtn} className={`${color ? 'bg-blue-700 hover:bg-blue-700' : 'bg-red-600 hover:bg-red-600'}  font-semibold px-3 py-1 rounded-md text-white w-24`}>
                         LogOut
                       </button>

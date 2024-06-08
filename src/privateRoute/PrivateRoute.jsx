@@ -8,6 +8,9 @@ const PrivateRoute = ({children}) => {
   // auth provider
   const {user, loading} = useAuth();
 
+  //token
+  const token = localStorage.getItem('token')
+
   // navigate the location
   const location = useLocation()
 
@@ -17,11 +20,11 @@ const PrivateRoute = ({children}) => {
   }
 
   //user
-  if(user){
+  if(!user && !token){
+    return <Navigate to="/login" state={{from: location}} replace></Navigate>
+    }
+    
     return children
-  }
-
-  return <Navigate to="/login" state={{from: location}} replace></Navigate>
 };
 
 export default PrivateRoute;

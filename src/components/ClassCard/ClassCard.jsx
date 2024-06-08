@@ -78,7 +78,8 @@ const ClassCard = ({data}) => {
             <li className="text-[9px] sm:text-sm md:text-xs lg:text-base xl:text-base"><span className={`${color ? 'text-blue-700' : 'text-black'} font-bold`}>availableSeats :</span> <span className={`${color ? 'text-gray-400' : 'text-black'}`}>{data.availableSeats}</span></li>
             <li className="text-[9px] sm:text-sm md:text-xs lg:text-base xl:text-base"><span className={`${color ? 'text-blue-700' : 'text-black'} font-bold`}>Price :</span> <span className={`${color ? 'text-gray-400' : 'text-black'}`}>${data.price}</span></li>
             <li>
-            <button onClick={() => selectClass(data)} disabled={isAdmin || isInstructor || data.totalEnroll === 0} className={` ${color ? 'bg-blue-700 hover:bg-blue-700' : 'bg-red-600 hover:bg-red-600'} btn btn-xs lg:btn-md w-full  text-white outline-none border-none`}>Select</button>
+            <button onClick={() => selectClass(data)} disabled={isAdmin || isInstructor || data?.totalEnroll === 0} className={` ${color ? 'bg-blue-700 hover:bg-blue-700' : 'bg-red-600 hover:bg-red-600'} btn btn-xs lg:btn-md w-full  text-white outline-none border-none`}>Select</button>
+
             </li>
           </ul>
         </div>

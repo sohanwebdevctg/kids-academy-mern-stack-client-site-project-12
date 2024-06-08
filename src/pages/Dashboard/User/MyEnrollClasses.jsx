@@ -2,18 +2,19 @@ import Title from "../../../components/Title/Title";
 import { useQuery } from '@tanstack/react-query';
 import useAuth from './../../../hooks/useAuth';
 import useAxiosSecure from './../../../hooks/useAxiosSecure';
+import LoadingPage from "../../../components/LoadingPage/LoadingPage";
 
 
 const MyEnrollClasses = () => {
 
   //authProvider
-  const {user, loading} = useAuth()
+  const {user,loading} = useAuth()
 
   //axiosSecure
   const [axiosSecure] = useAxiosSecure()
 
   //fetch enrollClasses data
-  const { data: enrollClasses = [] } = useQuery({
+  const { data: enrollClasses = [], isLoading: isEnrollClassLoading } = useQuery({
     queryKey: ['enrollClasses', user?.email],
     enabled: !loading,
     queryFn: async () => {
@@ -21,6 +22,10 @@ const MyEnrollClasses = () => {
       return res.data;
     },
   })
+
+  if(isEnrollClassLoading){
+    return <LoadingPage></LoadingPage>
+  }
 
   return (
     <div>

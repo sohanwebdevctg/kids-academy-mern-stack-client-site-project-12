@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useUsers from "../../../hooks/useUsers";
 import Title from "../../../components/Title/Title";
+import LoadingPage from "../../../components/LoadingPage/LoadingPage";
 
 const ManageUsers = () => {
 
@@ -12,7 +13,12 @@ const ManageUsers = () => {
   const [axiosSecure] = useAxiosSecure();
 
   // users
-  const [users, refetch] = useUsers();
+  const [users, refetch, isUserLoading] = useUsers();
+
+  // loading state
+  if(isUserLoading){
+    return <LoadingPage></LoadingPage>
+  }
 
 
 
