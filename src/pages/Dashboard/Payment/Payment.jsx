@@ -29,9 +29,6 @@ const Payment = () => {
   //stripe key
   const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
 
-  if(!isUserClassLoading){
-    return <LoadingPage></LoadingPage>
-  }
 
   return (
     <div>
