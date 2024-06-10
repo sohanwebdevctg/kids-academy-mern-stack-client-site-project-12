@@ -67,7 +67,7 @@ const Register = () => {
         .then(() => {
           
           //create user backend
-          axios.post('http://localhost:5000/users', {name:name, email: email, photo: imageUrl})
+          axios.post("http://localhost:5173/users", {name:name, email: email, photo: imageUrl})
           .then((data) => {
             // success message
           Swal.fire({

@@ -15,7 +15,7 @@ const Payment = () => {
   const {id} = useParams();
 
   //selected classes get
-  const [userSelectedClasses,refetch, isUserClassLoading] = useUserSelectedClasses();
+  const [userSelectedClasses,refetch] = useUserSelectedClasses();
   
   //condition
   useEffect(() => {
