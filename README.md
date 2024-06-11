@@ -6,7 +6,7 @@
 * ### this project created by(react,vite, firebase, tailwind css, daisyui, react router,react icon, react slick, sweetalert2, slick slider,axios,helmet, etc..)
 * ### this project we are using payment methods(stripe)
 
-
+* ### live link (https://6667eeb57d5cedaeb6d77058--stunning-salamander-b0ff90.netlify.app)
 
 <!-- Admin & Instructor & User (name,email,password) -->
 
