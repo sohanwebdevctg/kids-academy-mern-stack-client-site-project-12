@@ -66,7 +66,7 @@ const AuthProvider = ({children}) => {
       // token get from user
       if(currentUser && currentUser?.email){
         const email = currentUser.email;
-        axios.post('http://localhost:5000/jwt', {email})
+        axios.post('https://kids-academy-server.vercel.app/jwt', {email})
         .then((data) => {
           if(data.status === 200){
           //token set
@@ -85,7 +85,7 @@ const AuthProvider = ({children}) => {
     return () => {
       return unsubscribed()
     }
-  },[])
+  },[auth])
 
   // user info
   const userInfo = {user,color, setColor,toggleColor, loading, signUp, logIn, updateUserProfile, googleSignIn, logOut}

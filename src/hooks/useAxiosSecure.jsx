@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 // get data
 const axiosSecure = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'https://kids-academy-server.vercel.app',
 });
 
 const useAxiosSecure = () => {

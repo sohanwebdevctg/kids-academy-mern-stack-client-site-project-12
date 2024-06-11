@@ -11,6 +11,12 @@ const Profile = () => {
   // admin role
   const [isAdmin] = useAdmin();
 
+  // useEffect(()=>{
+  //   axios.get('https://kids-academy-server.vercel.app/users/instructors')
+  //   .then((res) => console.log(res.data))
+  // },[])
+
+
     //instructor role
     const [isInstructor] = useInstructor();
   // authProvider

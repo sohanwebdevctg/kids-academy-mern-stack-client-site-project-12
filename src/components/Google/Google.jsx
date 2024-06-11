@@ -20,7 +20,7 @@ const Google = () => {
       .then((result) => {
         const user = result.user;
         //create user backend
-      axios.post("http://localhost:5173/users", {name: user.displayName, email: user.email,photo: user.photoURL})
+      axios.post("https://kids-academy-server.vercel.app/users", {name: user.displayName, email: user.email,photo: user.photoURL})
         .then((data) => {
             // success message
             Swal.fire({

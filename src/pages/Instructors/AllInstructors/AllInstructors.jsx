@@ -1,21 +1,23 @@
+
 import InstructorsCard from "../../../components/InstructorsCard/InstructorsCard";
 import useAuth from "../../../hooks/useAuth";
 import useInstructors from "../../../hooks/useInstructors";
-import LoadingPage from './../../../components/LoadingPage/LoadingPage';
 
 
 const AllInstructors = () => {
 
     // instructors data
-    const [instructors, isInstructorLoading] = useInstructors();
+    const [instructors] = useInstructors();
 
     //authProvider
     const {color} = useAuth()
 
-    //loading state
-    if(isInstructorLoading){
-      return <LoadingPage></LoadingPage>
-    }
+    // useEffect(() => {
+    //   fetch('https://kids-academy-server-q6nytj184-sohanwebdevctgs-projects.vercel.app/users/instructors')
+    //   .then((res) => res.json())
+    //   .then((data) => console.log('all instructor',data))
+    // },[])
+
 
   return (
     <div className={`${color ? 'bg-[#070709]' : 'bg-white'} h-full md:h-full px-5 py-16 md:py-14`}>

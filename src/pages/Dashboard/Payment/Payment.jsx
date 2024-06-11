@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
-import LoadingPage from "../../../components/LoadingPage/LoadingPage";
 
 
 
